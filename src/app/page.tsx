@@ -27,6 +27,13 @@ export default function Home() {
       "priceCurrency": "USD",
       "description": "Free tier available for basic charting and journaling."
     },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "ratingCount": "1",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "featureList": [
       "Multi-Timeframe Analysis",
       "Real-time Market Data",
