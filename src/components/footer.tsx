@@ -1100,16 +1100,15 @@ export const siteConfig = {
         { id: 1, title: "About", url: "#" },
         { id: 2, title: "Contact", url: "/contact" },
         { id: 3, title: "Blog", url: "#" },
-        { id: 4, title: "Story", url: "/story" },
+                  { id: 4, title: "Story", url: "/story" },
       ],
     },
     {
-      title: "Products",
+      title: "Social",
       links: [
-        { id: 5, title: "Features", url: "#" },
-        { id: 6, title: "Pricing", url: "/pricing" },
-        { id: 7, title: "Integrations", url: "#" },
-        { id: 8, title: "Changelog", url: "/changelog" },
+        { id: 5, title: "Twitter", url: "https://twitter.com/axiusflow" },
+        { id: 6, title: "Instagram", url: "https://instagram.com/axiusflow" },
+        { id: 7, title: "Discord", url: "https://discord.gg/e62CkyJVDq" },
       ],
     },
     {

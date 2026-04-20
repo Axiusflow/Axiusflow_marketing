@@ -14,7 +14,12 @@ export default function Home() {
       "@type": "Organization",
       "name": "Axiusflow",
       "url": "https://axiusflow.com",
-      "logo": "https://axiusflow.com/brand/logo_transparent.svg"
+      "logo": "https://axiusflow.com/brand/logo_transparent.svg",
+      "sameAs": [
+        "https://twitter.com/axiusflow",
+        "https://instagram.com/axiusflow",
+        "https://discord.gg/e62CkyJVDq"
+      ]
     },
     "offers": {
       "@type": "Offer",
