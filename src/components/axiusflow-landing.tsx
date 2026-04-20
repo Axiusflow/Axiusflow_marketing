@@ -180,7 +180,7 @@ export function AxiusflowLandingPage() {
                   <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
                 </svg>
                 <span className="text-[14px] font-medium af-text-secondary transition-colors">
-                  April 15: Agents are now available in Slack
+                  New: Real-time data from 50+ global exchanges
                 </span>
               </motion.div>
 
@@ -191,7 +191,7 @@ export function AxiusflowLandingPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="font-display mx-auto max-w-[980px] text-[clamp(42px,4.7vw,68px)] font-medium leading-[0.98] tracking-[-0.035em] af-text-primary transition-colors"
               >
-                The AI Sourcing and Outbound<br />Platform Built for Your Hardest Roles
+                Advanced Charting & Analytics<br />Built for Serious Traders
               </motion.h1>
 
               {/* Subheadline */}
@@ -201,7 +201,7 @@ export function AxiusflowLandingPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="mx-auto mt-6 max-w-[640px] text-[18px] leading-[1.5] af-text-secondary transition-colors"
               >
-                Axiusflow lets you source in natural language, engage<br />candidates at scale, and interview with intelligence.
+                Axiusflow delivers real-time market data, professional charting<br />tools, and seamless broker integrations—all in one platform.
               </motion.p>
 
               {/* CTA Button */}
@@ -246,31 +246,21 @@ export function AxiusflowLandingPage() {
           </section>
         </div>
 
-        {/* Logo Cloud outside the wrapper, on pure white page background */}
+        {/* Logo Cloud - Trusted Integrations */}
         <section className="af-page-bg pb-24 pt-8 transition-colors duration-300 lg:pt-10">
           <div className="mx-auto max-w-[1000px] px-6">
-            <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-12 opacity-80 mix-blend-multiply dark:opacity-60 dark:mix-blend-normal">
-              <span className="font-display text-[26px] font-bold tracking-tight af-text-primary transition-colors">chime</span>
-              
-              <span className="font-display flex items-center gap-1.5 text-[20px] font-bold tracking-widest af-text-primary transition-colors">
-                <span className="block h-4 w-4 af-bg-text-primary transition-colors" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
-                GRADIENT
-              </span>
-              
-              <span className="font-display text-[22px] font-bold tracking-widest af-text-primary transition-colors">ALTERRA</span>
-              
-              <span className="font-display text-[28px] font-semibold af-text-primary transition-colors">Pear</span>
-              
-              <div className="flex flex-col items-center justify-center leading-none af-text-primary transition-colors">
-                <span className="font-display text-[20px] font-bold uppercase tracking-wide">Menlo</span>
-                <span className="text-[10px] font-medium uppercase tracking-[0.2em]">Ventures</span>
-              </div>
-              
-              <span className="font-display text-[32px] font-black tracking-tighter af-text-primary transition-colors">KOS</span>
-              
-              <span className="font-display text-[22px] font-bold tracking-tight af-text-primary transition-colors">Coral Care</span>
-              
-              <span className="font-display text-[20px] font-bold tracking-wider af-text-primary transition-colors">STELLIC</span>
+            <p className="mb-8 text-center text-[14px] font-medium uppercase tracking-wider af-text-secondary">
+              Trusted integrations with leading brokers
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+              <Image src="/broker_logo/tradingview.png" alt="TradingView" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/Ibkr.png" alt="Interactive Brokers" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/td_ameritrade.png" alt="TD Ameritrade" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/robinhood.png" alt="Robinhood" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/coinbase.png" alt="Coinbase" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/webull.png" alt="Webull" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/tradestation.png" alt="TradeStation" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
+              <Image src="/broker_logo/ninjatrader.png" alt="NinjaTrader" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
             </div>
           </div>
         </section>
@@ -289,9 +279,9 @@ export function AxiusflowLandingPage() {
                 Why Axiusflow?
               </h2>
               <p className="mx-auto mt-4 max-w-[680px] text-[16px] leading-[1.6] af-text-secondary">
-                Whether you run a one-person studio or a large company with hundreds of staff, 
-                Axiusflow is designed to help you source, engage, and hire through an 
-                easy-to-setup intelligent platform.
+                Whether you're a day trader, swing trader, or long-term investor, 
+                Axiusflow provides professional-grade tools to analyze markets, execute 
+                trades, and manage your portfolio with confidence.
               </p>
             </div>
 

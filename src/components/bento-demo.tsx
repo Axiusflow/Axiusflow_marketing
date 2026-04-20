@@ -5,14 +5,10 @@ import Image from "next/image";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { 
-  Calendar, 
   Globe, 
   Bell, 
-  Users, 
   Clock, 
-  CalendarCheck,
-  Layers,
-  Timer
+  Layers
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -194,29 +190,42 @@ function IntegrationsVisual() {
 
 function CalendarVisual() {
   return (
-    <div className="w-full max-w-[220px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm">
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-xs text-gray-400">&lt;</span>
-        <span className="text-sm font-medium af-text-primary">August 2024</span>
-        <span className="text-xs text-gray-400">&gt;</span>
-      </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-xs">
-        {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
-          <span key={i} className="text-gray-400 py-1">{d}</span>
-        ))}
-        {[31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27].map((day, i) => (
-          <span
-            key={i}
-            className={`py-1 rounded ${
-              day === 8 ? 'bg-blue-500 text-white' : 
-              day === 13 ? 'bg-blue-500 text-white' : 
-              [9, 10, 11, 12].includes(day) ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400' :
-              day === 31 ? 'text-gray-300 dark:text-gray-600' : 
-              'af-text-primary'
+    <div className="w-full max-w-[220px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 shadow-sm">
+      {/* Timeframe tabs */}
+      <div className="flex gap-1 mb-3">
+        {['1H', '4H', '1D'].map((tf, i) => (
+          <span 
+            key={tf} 
+            className={`flex-1 text-center text-xs py-1 rounded ${
+              i === 1 ? 'bg-blue-500 text-white' : 'bg-gray-100 dark:bg-white/10 af-text-secondary'
             }`}
           >
-            {day}
+            {tf}
           </span>
+        ))}
+      </div>
+      {/* Mini chart representations */}
+      <div className="space-y-2">
+        {[
+          { tf: '1H', trend: 'up', bars: [40, 45, 42, 50, 55, 52, 60] },
+          { tf: '4H', trend: 'up', bars: [30, 35, 45, 50, 48, 55, 58] },
+          { tf: '1D', trend: 'down', bars: [60, 55, 50, 45, 48, 42, 40] },
+        ].map((chart) => (
+          <div key={chart.tf} className="flex items-center gap-2">
+            <span className="w-6 text-xs font-medium af-text-secondary">{chart.tf}</span>
+            <div className="flex-1 h-6 flex items-end gap-0.5">
+              {chart.bars.map((h, i) => (
+                <div 
+                  key={i} 
+                  className={`flex-1 rounded-sm ${chart.trend === 'up' ? 'bg-emerald-400' : 'bg-red-400'}`}
+                  style={{ height: `${h}%` }}
+                />
+              ))}
+            </div>
+            <span className={`text-xs ${chart.trend === 'up' ? 'text-emerald-500' : 'text-red-500'}`}>
+              {chart.trend === 'up' ? '↑' : '↓'}
+            </span>
+          </div>
         ))}
       </div>
     </div>
@@ -231,18 +240,18 @@ function TimezoneVisual() {
         <div className="w-56 h-32 rounded-xl bg-gradient-to-r from-gray-100 to-gray-50 dark:from-white/5 dark:to-white/10 flex items-center justify-center">
           <Globe className="w-16 h-16 text-gray-300 dark:text-white/20" strokeWidth={0.5} />
         </div>
-        {/* Timezone badges */}
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-[8px] bg-gray-100 dark:bg-white/10 text-xs font-medium af-text-secondary">
-          IST
+        {/* Market session badges */}
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-[8px] bg-emerald-100 dark:bg-emerald-500/20 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+          TSE Open
         </div>
-        <div className="absolute top-1/2 -translate-y-1/2 -left-4 px-2 py-1 rounded-[8px] bg-white dark:bg-white/10 text-xs af-text-primary">
-          EST
+        <div className="absolute top-1/2 -translate-y-1/2 -left-4 px-2 py-1 rounded-[8px] bg-blue-100 dark:bg-blue-500/20 text-xs text-blue-600 dark:text-blue-400">
+          NYSE
         </div>
-        <div className="absolute top-1/2 -translate-y-1/2 -right-4 px-2 py-1 rounded-[8px] bg-white dark:bg-white/10 text-xs af-text-primary">
-          PST
+        <div className="absolute top-1/2 -translate-y-1/2 -right-4 px-2 py-1 rounded-[8px] bg-amber-100 dark:bg-amber-500/20 text-xs text-amber-600 dark:text-amber-400">
+          LSE
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1 rounded-[8px] bg-blue-500 text-white text-xs font-medium">
-          12:00 PM
+          Live
         </div>
       </div>
     </div>
@@ -251,32 +260,34 @@ function TimezoneVisual() {
 
 function RemindersVisual() {
   return (
-    <div className="w-full max-w-[320px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm">
+    <div className="w-full max-w-[360px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Bell className="w-4 h-4 af-text-secondary" />
-          <span className="text-sm font-medium af-text-primary">Email Reminders</span>
+          <span className="text-sm font-medium af-text-primary">Price Alerts</span>
         </div>
         <button className="text-xs px-3 py-1 rounded-[8px] border border-gray-200 dark:border-white/10 af-text-secondary">
-          + Add Reminder
+          + New Alert
         </button>
       </div>
       <div className="space-y-3">
         {[
-          { active: true, value: '1', unit: 'Hours' },
-          { active: false, value: '30', unit: 'Minutes' },
-          { active: true, value: '24', unit: 'Hours' },
-        ].map((item, i) => (
+          { active: true, symbol: 'AAPL', condition: 'Above', price: '$185.00', color: 'text-emerald-500' },
+          { active: true, symbol: 'TSLA', condition: 'Below', price: '$240.00', color: 'text-red-500' },
+          { active: false, symbol: 'SPY', condition: 'Cross', price: '$450.00', color: 'text-blue-500' },
+        ].map((alert, i) => (
           <div key={i} className="flex items-center gap-3">
-            <div className={`w-9 h-5 rounded-full ${item.active ? 'bg-blue-500' : 'bg-gray-200 dark:bg-white/10'} relative`}>
-              <div className={`absolute top-0.5 ${item.active ? 'right-0.5' : 'left-0.5'} w-4 h-4 rounded-full bg-white shadow-sm`} />
+            <div className={`w-9 h-5 rounded-full ${alert.active ? 'bg-blue-500' : 'bg-gray-200 dark:bg-white/10'} relative`}>
+              <div className={`absolute top-0.5 ${alert.active ? 'right-0.5' : 'left-0.5'} w-4 h-4 rounded-full bg-white shadow-sm`} />
+            </div>
+            <div className="w-14 h-8 rounded-lg border border-gray-200 dark:border-white/10 flex items-center justify-center text-sm font-medium af-text-primary">
+              {alert.symbol}
+            </div>
+            <div className={`w-16 h-8 rounded-lg border border-gray-200 dark:border-white/10 flex items-center justify-center text-xs ${alert.color}`}>
+              {alert.condition}
             </div>
             <div className="flex-1 h-8 rounded-lg border border-gray-200 dark:border-white/10 flex items-center px-3 text-sm af-text-primary">
-              {item.value}
-            </div>
-            <div className="w-24 h-8 rounded-lg border border-gray-200 dark:border-white/10 flex items-center justify-between px-3 text-sm af-text-secondary">
-              {item.unit}
-              <span className="text-gray-400">▼</span>
+              {alert.price}
             </div>
           </div>
         ))}
@@ -289,31 +300,25 @@ function TeamMembersVisual() {
   return (
     <div className="w-full max-w-[280px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
-        <Users className="w-4 h-4 af-text-secondary" />
-        <span className="text-sm font-medium af-text-primary">Add Team Members</span>
+        <Layers className="w-4 h-4 af-text-secondary" />
+        <span className="text-sm font-medium af-text-primary">Trading Accounts</span>
       </div>
-      <div className="flex items-center gap-2 mb-4">
-        <input 
-          type="text" 
-          placeholder="Add email address" 
-          className="flex-1 h-8 rounded-lg border border-gray-200 dark:border-white/10 bg-transparent px-3 text-xs af-text-secondary placeholder:text-gray-400"
-          readOnly
-        />
-        <button className="px-3 h-8 text-xs text-blue-500 font-medium">Send</button>
-      </div>
-      <div className="text-xs af-text-secondary mb-2">Members (2/20)</div>
+      <div className="text-xs af-text-secondary mb-2">Connected (3)</div>
       <div className="space-y-2">
         {[
-          { name: 'Charles Password', schedule: 'Mon - Fri, 8am - 6pm', role: 'Admin', roleColor: 'bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400' },
-          { name: 'Aryan Agarwal', schedule: 'Mon - Sat, 2pm - 6pm', role: 'Staff', roleColor: 'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400' },
-        ].map((member, i) => (
+          { name: 'Interactive Brokers', balance: '$48,250.00', status: 'Active', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/broker_logo/Ibkr.png' },
+          { name: 'TD Ameritrade', balance: '$12,840.50', status: 'Active', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/broker_logo/td_ameritrade.png' },
+          { name: 'Robinhood', balance: '$5,120.25', status: 'Paper', statusColor: 'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400', logo: '/broker_logo/robinhood.png' },
+        ].map((account, i) => (
           <div key={i} className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-white/20 dark:to-white/10" />
-            <div className="flex-1">
-              <div className="text-sm font-medium af-text-primary">{member.name}</div>
-              <div className="text-xs af-text-secondary">{member.schedule}</div>
+            <div className="w-8 h-8 rounded-full bg-white dark:bg-white/90 flex items-center justify-center overflow-hidden p-1">
+              <Image src={account.logo} alt={account.name} width={24} height={24} className="w-6 h-6 object-contain" />
             </div>
-            <span className={`text-xs px-2 py-0.5 rounded ${member.roleColor}`}>{member.role}</span>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-medium af-text-primary truncate">{account.name}</div>
+              <div className="text-xs af-text-secondary">{account.balance}</div>
+            </div>
+            <span className={`text-xs px-2 py-0.5 rounded whitespace-nowrap ${account.statusColor}`}>{account.status}</span>
           </div>
         ))}
       </div>
@@ -325,18 +330,22 @@ function GroupBookingVisual() {
   return (
     <div className="w-full max-w-[200px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden shadow-sm">
       <div className="p-3 border-b border-gray-100 dark:border-white/5">
-        <div className="text-sm font-medium af-text-primary">Lama Walk</div>
-        <div className="flex items-center gap-3 mt-1 text-xs af-text-secondary">
-          <span className="flex items-center gap-1">
-            <CalendarCheck className="w-3 h-3" /> 29 May
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock className="w-3 h-3" /> 12:00 PM
-          </span>
-        </div>
+        <div className="text-sm font-medium af-text-primary">Order Types</div>
+        <div className="text-xs af-text-secondary mt-1">Execute any strategy</div>
       </div>
-      <div className="h-24 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/20 dark:to-orange-900/20 flex items-center justify-center">
-        <Users className="w-8 h-8 text-amber-500/50" />
+      <div className="p-3 space-y-2">
+        {[
+          { type: 'Market', desc: 'Instant execution', color: 'bg-emerald-500' },
+          { type: 'Limit', desc: 'Set your price', color: 'bg-blue-500' },
+          { type: 'Stop Loss', desc: 'Protect positions', color: 'bg-red-500' },
+          { type: 'OCO', desc: 'One cancels other', color: 'bg-purple-500' },
+        ].map((order, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <div className={`w-2 h-2 rounded-full ${order.color}`} />
+            <span className="text-xs font-medium af-text-primary">{order.type}</span>
+            <span className="text-xs af-text-secondary ml-auto">{order.desc}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -345,16 +354,16 @@ function GroupBookingVisual() {
 function DurationVisual() {
   return (
     <div className="flex flex-wrap gap-2 justify-center max-w-[220px] mx-auto">
-      {['30 minutes', '60 minutes', '15 min', 'Custom', '30 min', '15 minutes', '10 hours'].map((duration, i) => (
+      {['1m', '5m', '15m', '1H', '4H', '1D', '1W', '1M'].map((timeframe, i) => (
         <span 
           key={i} 
           className={`px-3 py-1.5 rounded-[8px] text-xs font-medium ${
-            duration === 'Custom' 
+            timeframe === '4H' 
               ? 'bg-gray-900 text-white dark:bg-white dark:text-black' 
               : 'border border-gray-200 dark:border-white/10 af-text-secondary'
           }`}
         >
-          {duration}
+          {timeframe}
         </span>
       ))}
     </div>
@@ -365,29 +374,25 @@ function BlockDatesVisual() {
   return (
     <div className="w-full max-w-[240px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
-        <Calendar className="w-4 h-4 af-text-secondary" />
-        <span className="text-sm font-medium af-text-primary">Block Dates</span>
+        <Clock className="w-4 h-4 af-text-secondary" />
+        <span className="text-sm font-medium af-text-primary">Market Sessions</span>
       </div>
       <div className="space-y-2">
         {[
-          { day: 'MON', active: true, times: ['9:00 AM', '5:30 PM'] },
-          { day: 'TUE', active: false, label: 'New Year Eve', labelColor: 'text-purple-500' },
-          { day: 'WED', active: false, label: 'Christmas', labelColor: 'text-amber-500' },
+          { session: 'Pre-Market', active: true, times: ['4:00 AM', '9:30 AM'], color: 'text-amber-500' },
+          { session: 'Regular', active: true, times: ['9:30 AM', '4:00 PM'], color: 'text-emerald-500' },
+          { session: 'After-Hours', active: false, times: ['4:00 PM', '8:00 PM'], color: 'text-purple-500' },
         ].map((item, i) => (
           <div key={i} className="flex items-center gap-2">
             <div className={`w-8 h-4 rounded-full ${item.active ? 'bg-blue-500' : 'bg-gray-200 dark:bg-white/10'} relative`}>
               <div className={`absolute top-0.5 ${item.active ? 'right-0.5' : 'left-0.5'} w-3 h-3 rounded-full bg-white shadow-sm`} />
             </div>
-            <span className="w-10 text-xs font-medium af-text-primary">{item.day}</span>
-            {item.times ? (
-              <div className="flex gap-1">
-                {item.times.map((t, j) => (
-                  <span key={j} className="text-xs px-2 py-0.5 rounded border border-gray-200 dark:border-white/10 af-text-secondary">{t}</span>
-                ))}
-              </div>
-            ) : (
-              <span className={`text-xs ${item.labelColor}`}>{item.label}</span>
-            )}
+            <span className={`w-20 text-xs font-medium ${item.color}`}>{item.session}</span>
+            <div className="flex gap-1">
+              {item.times.map((t, j) => (
+                <span key={j} className="text-xs px-1.5 py-0.5 rounded border border-gray-200 dark:border-white/10 af-text-secondary">{t}</span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -400,60 +405,60 @@ export function BentoDemo() {
     <BentoGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {/* Row 1: 3 equal cards */}
       <BentoCard
-        title="Integrations"
-        description="Meticulously designed and optimized for a great user experience."
+        title="Broker Integrations"
+        description="Connect to 15+ brokers and trading platforms with one-click setup."
       >
         <IntegrationsVisual />
       </BentoCard>
 
       <BentoCard
-        title="Multiday booking"
-        description="Allow your guests to book several days/nights. You can also rent boats or cars."
+        title="Multi-Timeframe Analysis"
+        description="Analyze charts across multiple timeframes simultaneously to spot trends and patterns."
       >
         <CalendarVisual />
       </BentoCard>
 
       <BentoCard
-        title="Automatically detects timezone"
-        description="You live in the US and sell tours for European customers? We can handle that."
+        title="Global Market Coverage"
+        description="Trade markets across any timezone with automatic session detection and market hours."
       >
         <TimezoneVisual />
       </BentoCard>
 
       {/* Row 2: 2 cards (wider left, narrower right) */}
       <BentoCard
-        title="Effortless Scheduling with Automated Reminders"
-        description="Notifications for New Bookings & Appointments"
+        title="Smart Alerts & Real-Time Notifications"
+        description="Get instant alerts for price movements, technical signals, and market events."
         className="lg:col-span-2"
       >
         <RemindersVisual />
       </BentoCard>
 
       <BentoCard
-        title="Add Team Members"
-        description="Meticulously designed and optimized for a great user experience"
+        title="Multi-Account Management"
+        description="Manage multiple trading accounts and portfolios from a single dashboard."
       >
         <TeamMembersVisual />
       </BentoCard>
 
       {/* Row 3: 3 equal cards */}
       <BentoCard
-        title="Allow group booking"
-        description="Timeslots will automatically adjust whether your customers book for 1 or for 17."
+        title="Advanced Order Types"
+        description="From market orders to complex brackets and OCO, execute any strategy with precision."
       >
         <GroupBookingVisual />
       </BentoCard>
 
       <BentoCard
-        title="Custom Meeting Duration"
-        description="Whether you need 15min duration or 7h duration, both can be done."
+        title="Customizable Timeframes"
+        description="From tick charts to monthly candles, analyze any timeframe that fits your strategy."
       >
         <DurationVisual />
       </BentoCard>
 
       <BentoCard
-        title="Block Any Date"
-        description="You're not working on Christmas? Simply block the 24th/25th and no one will be able to book."
+        title="Market Sessions & Hours"
+        description="Automatic detection of pre-market, regular hours, and after-hours trading sessions."
       >
         <BlockDatesVisual />
       </BentoCard>
