@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 import { NoiseBackground } from "@/components/ui/noise-background";
+import { Component as FlickeringFooter } from "@/components/flickering-footer";
 
 function subscribe() {
   return () => {};
@@ -144,12 +145,7 @@ export function AxiusflowLandingPage() {
             </div>
 
             {/* Hero Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="mx-auto mt-14 max-w-[1380px] px-4 sm:px-6"
-            >
+            <div className="mx-auto mt-14 max-w-[1380px] px-4 sm:px-6">
               <NoiseBackground
                 containerClassName="rounded-xl p-[6px]"
                 gradientColors={[
@@ -170,7 +166,7 @@ export function AxiusflowLandingPage() {
                   />
                 </div>
               </NoiseBackground>
-            </motion.div>
+            </div>
           </section>
         </div>
 
@@ -202,6 +198,8 @@ export function AxiusflowLandingPage() {
             </div>
           </div>
         </section>
+
+        <FlickeringFooter />
       </main>
     </div>
   );
