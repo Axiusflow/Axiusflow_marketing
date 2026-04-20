@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { NoiseBackground } from "@/components/ui/noise-background";
 
 function subscribe() {
   return () => {};
@@ -121,15 +122,24 @@ export function AxiusflowLandingPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-8"
+                className="mt-8 flex justify-center"
               >
-                <Link
-                  href="#"
-                  className="inline-flex items-center gap-2 rounded-[8px] px-6 py-2 text-[16px] font-medium af-hero-cta transition-colors"
+                <NoiseBackground
+                  containerClassName="w-fit p-2 rounded-full mx-auto"
+                  gradientColors={[
+                    "rgb(255, 100, 150)",
+                    "rgb(100, 150, 255)",
+                    "rgb(255, 200, 100)",
+                  ]}
                 >
-                  Get Started
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                  <Link
+                    href="#"
+                    className="inline-flex h-full w-full cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-neutral-100 via-neutral-100 to-white px-6 py-2.5 text-[16px] font-medium text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-[0.98] dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
+                  >
+                    Get Started
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </NoiseBackground>
               </motion.div>
             </div>
 
@@ -140,16 +150,26 @@ export function AxiusflowLandingPage() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="mx-auto mt-14 max-w-[1380px] px-4 sm:px-6"
             >
-              <div className="overflow-hidden rounded-[8px]">
-                <Image
-                  src="/hero_image.png"
-                  alt="Axiusflow platform hero preview"
-                  width={1600}
-                  height={900}
-                  priority
-                  className="h-auto w-full"
-                />
-              </div>
+              <NoiseBackground
+                containerClassName="rounded-xl p-[6px]"
+                gradientColors={[
+                  "rgb(185, 152, 250)",
+                  "rgb(255, 221, 110)",
+                  "rgb(232, 188, 229)",
+                ]}
+                noiseIntensity={0.15}
+              >
+                <div className="overflow-hidden rounded-[10px] bg-white dark:bg-neutral-900">
+                  <Image
+                    src="/hero_image.png"
+                    alt="Axiusflow platform hero preview"
+                    width={1600}
+                    height={900}
+                    priority
+                    className="h-auto w-full"
+                  />
+                </div>
+              </NoiseBackground>
             </motion.div>
           </section>
         </div>
