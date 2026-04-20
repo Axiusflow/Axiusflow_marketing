@@ -16,14 +16,14 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Broker icons as simple text badges for now
+// Broker logos from the public folder
 const brokers = [
-  { name: "IB", label: "Interactive Brokers", color: "bg-red-500" },
-  { name: "TD", label: "TD Ameritrade", color: "bg-green-600" },
-  { name: "FD", label: "Fidelity", color: "bg-emerald-500" },
-  { name: "SC", label: "Schwab", color: "bg-blue-600" },
-  { name: "ET", label: "E*TRADE", color: "bg-purple-600" },
-  { name: "RH", label: "Robinhood", color: "bg-yellow-500" },
+  { name: "Interactive Brokers", logo: "/broker_logo/Ibkr.png" },
+  { name: "TD Ameritrade", logo: "/broker_logo/td_ameritrade.png" },
+  { name: "TradingView", logo: "/broker_logo/tradingview.png" },
+  { name: "Robinhood", logo: "/broker_logo/robinhood.png" },
+  { name: "Webull", logo: "/broker_logo/webull.png" },
+  { name: "NinjaTrader", logo: "/broker_logo/ninjatrader.png" },
 ];
 
 // Circle component for the beam nodes
@@ -65,13 +65,16 @@ function IntegrationsVisual() {
           <div
             key={broker.name}
             ref={brokerRefs[i]}
-            className={cn(
-              "w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md",
-              broker.color
-            )}
-            title={broker.label}
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white dark:bg-white/90 shadow-md overflow-hidden p-1.5"
+            title={broker.name}
           >
-            {broker.name}
+            <Image
+              src={broker.logo}
+              alt={broker.name}
+              width={28}
+              height={28}
+              className="w-7 h-7 object-contain"
+            />
           </div>
         ))}
       </div>
@@ -96,13 +99,16 @@ function IntegrationsVisual() {
           <div
             key={broker.name}
             ref={brokerRefs[i + 3]}
-            className={cn(
-              "w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md",
-              broker.color
-            )}
-            title={broker.label}
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white dark:bg-white/90 shadow-md overflow-hidden p-1.5"
+            title={broker.name}
           >
-            {broker.name}
+            <Image
+              src={broker.logo}
+              alt={broker.name}
+              width={28}
+              height={28}
+              className="w-7 h-7 object-contain"
+            />
           </div>
         ))}
       </div>
