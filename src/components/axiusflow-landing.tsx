@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 import { NoiseBackground } from "@/components/ui/noise-background";
+import { BentoDemo } from "@/components/bento-demo";
 import { Component as FlickeringFooter } from "@/components/flickering-footer";
 
 function subscribe() {
@@ -196,6 +197,25 @@ export function AxiusflowLandingPage() {
               
               <span className="font-display text-[20px] font-bold tracking-wider af-text-primary transition-colors">STELLIC</span>
             </div>
+          </div>
+        </section>
+
+        <section className="af-page-bg pb-16 pt-6 transition-colors duration-300 lg:pb-20">
+          <div className="mx-auto max-w-[1240px] px-6">
+            <div className="mb-6 max-w-[700px] text-left lg:mb-8">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.14em] af-text-secondary">
+                Product Features
+              </p>
+              <h2 className="font-display mt-2 text-[clamp(22px,2.3vw,32px)] font-semibold leading-[1.12] tracking-[-0.01em] af-text-primary">
+                Everything your team needs in one workspace
+              </h2>
+              <p className="mt-2 max-w-[620px] text-[15px] leading-[1.45] af-text-secondary">
+                Move faster with intelligent tooling for file management, search,
+                collaboration, and notifications.
+              </p>
+            </div>
+
+            <BentoDemo />
           </div>
         </section>
 
