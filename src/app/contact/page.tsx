@@ -1,15 +1,10 @@
 "use client";
 
-import { Moon, Sun, ArrowLeft, Check } from "lucide-react";
-import Image from "next/image";
+import { Check } from "lucide-react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { useSyncExternalStore, useState } from "react";
+import { useState } from "react";
 import { Component as Footer } from "@/components/footer";
-
-function subscribe() {
-  return () => {};
-}
+import { Header } from "@/components/header";
 
 const benefits = [
   "Connect all your brokers in one unified platform",
@@ -37,55 +32,11 @@ const companySizes = [
 ];
 
 export default function ContactPage() {
-  const { theme, setTheme } = useTheme();
-  const mounted = useSyncExternalStore(subscribe, () => true, () => false);
   const [companySize, setCompanySize] = useState("Please Select");
 
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      {/* Header */}
-      <header className="relative z-50 af-page-bg transition-colors duration-300">
-        <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/brand/logo.svg"
-                alt="Axiusflow logo"
-                width={24}
-                height={24}
-                className="h-6 w-6"
-                priority
-              />
-              <span className="font-display text-[19px] font-semibold af-text-primary">
-                Axiusflow
-              </span>
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="flex h-9 w-9 items-center justify-center rounded-[8px] af-text-secondary transition-colors af-nav-hover"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
-              </button>
-            )}
-            <Link
-              href="/"
-              className="flex items-center gap-2 rounded-[8px] px-3 py-2 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header variant="simple" />
 
       {/* Main Content */}
       <main className="px-6 py-16">

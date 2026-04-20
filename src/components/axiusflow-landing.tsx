@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowRight, Moon, Sun, Layers } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Moon, Sun, Layers, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 import { NoiseBackground } from "@/components/ui/noise-background";
@@ -18,6 +19,7 @@ function subscribe() {
 export function AxiusflowLandingPage() {
   const { theme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(subscribe, () => true, () => false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
@@ -73,7 +75,89 @@ export function AxiusflowLandingPage() {
               Get Started
             </Link>
           </div>
+
+          {/* Mobile menu button */}
+          <div className="flex items-center gap-3 md:hidden">
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex h-9 w-9 items-center justify-center rounded-[8px] af-text-secondary transition-colors af-nav-hover"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+              </button>
+            )}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex h-9 w-9 items-center justify-center rounded-[8px] af-text-primary transition-colors af-nav-hover"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="border-t border-gray-200/50 dark:border-white/10 md:hidden"
+            >
+              <nav className="mx-auto max-w-[1240px] px-6 py-4">
+                <div className="flex flex-col gap-1">
+                  <Link 
+                    href="/pricing" 
+                    className="rounded-[8px] px-3 py-2.5 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                  <Link 
+                    href="/changelog" 
+                    className="rounded-[8px] px-3 py-2.5 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Changelog
+                  </Link>
+                  <Link 
+                    href="/story" 
+                    className="rounded-[8px] px-3 py-2.5 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Story
+                  </Link>
+                  <div className="my-2 border-t border-gray-200/50 dark:border-white/10" />
+                  <Link 
+                    href="#" 
+                    className="rounded-[8px] px-3 py-2.5 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Sign in
+                  </Link>
+                  <Link 
+                    href="#" 
+                    className="mt-2 rounded-[8px] px-4 py-2.5 text-center text-[15px] font-medium af-header-cta transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="px-[8px] md:px-[10px]">
