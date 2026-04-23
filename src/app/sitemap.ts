@@ -1,60 +1,62 @@
 import { MetadataRoute } from "next";
+import { ogImageUrl, siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://axiusflow.com";
+  const lastModified = new Date("2026-04-24T00:00:00.000Z");
   
   return [
     {
-      url: `${baseUrl}`,
-      lastModified: new Date(),
+      url: siteUrl,
+      lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
+      images: [ogImageUrl],
     },
     {
-      url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
+      url: `${siteUrl}/pricing`,
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/changelog`,
-      lastModified: new Date(),
+      url: `${siteUrl}/changelog`,
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/story`,
-      lastModified: new Date(),
+      url: `${siteUrl}/story`,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      url: `${siteUrl}/contact`,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      url: `${siteUrl}/terms`,
+      lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      url: `${siteUrl}/privacy`,
+      lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/disclaimer`,
-      lastModified: new Date(),
+      url: `${siteUrl}/disclaimer`,
+      lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/cookies`,
-      lastModified: new Date(),
+      url: `${siteUrl}/cookies`,
+      lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },

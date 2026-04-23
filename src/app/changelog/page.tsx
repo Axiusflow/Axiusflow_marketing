@@ -58,9 +58,9 @@ const changelogEntries: ChangelogEntry[] = [
     id: "3",
     tag: "Feature Release",
     date: "Apr 1, 2026",
-    title: "Multi-Broker Connectivity",
+    title: "Broker Import Foundation",
     description:
-      "Connect your favorite brokers and manage everything from one unified dashboard. Execute trades, view positions, and analyze performance across all your accounts in a single interface.",
+      "Import trade history into one unified dashboard, review positions in context, and analyze performance across multiple sources without claiming every broker is live on day one.",
   },
   {
     id: "4",
@@ -89,7 +89,7 @@ export default function ChangelogPage() {
         <div className="mx-auto max-w-[1000px]">
           {/* Hero Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="pt-16 pb-16 text-center lg:pt-24 lg:pb-20"
@@ -110,7 +110,7 @@ export default function ChangelogPage() {
             {changelogEntries.map((entry, index) => (
               <motion.article
                 key={entry.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative grid grid-cols-1 gap-6 pb-20 last:pb-0 lg:grid-cols-[140px_1fr] lg:gap-16"
@@ -209,7 +209,7 @@ export default function ChangelogPage() {
 
           {/* Bottom CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-24 text-center"

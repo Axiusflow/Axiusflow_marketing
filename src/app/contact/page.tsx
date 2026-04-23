@@ -8,18 +8,18 @@ import { Component as Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 const benefits = [
-  "Connect all your brokers in one unified platform",
-  "Get personalized onboarding and setup assistance",
-  "Access priority support and dedicated account management",
-  "Custom integrations tailored to your workflow",
-  "Enterprise-grade security with SSO and audit logs",
+  "Map your TradingView, broker, and journal workflow into Axiusflow",
+  "Get a focused demo of charting, journaling, replay, and AI review",
+  "Discuss supported trade imports and broker sync priorities",
+  "Request integrations that match your active trading workflow",
+  "Plan data, privacy, and analytics needs before launch access",
 ];
 
 const stats = [
-  { value: "85%", label: "of traders say journaling improved their win rate" },
-  { value: "3x", label: "faster trade execution with unified broker access" },
-  { value: "60%", label: "reduction in time spent switching between tools" },
-  { value: "500+", label: "professional traders already using Axiusflow" },
+  { value: "Live", label: "crypto charting available as the first data wedge" },
+  { value: "CSV", label: "trade import workflows for journal analytics" },
+  { value: "AI", label: "post-session review for decisions, risk, and behavior" },
+  { value: "Replay", label: "chart context connected to entries and exits" },
 ];
 
 const companySizes = [
@@ -49,8 +49,8 @@ export default function ContactPage() {
                 Contact Sales
               </h1>
               <p className="text-[17px] leading-[1.7] af-text-secondary mb-8">
-                We can give you a demo, help you choose the best plan, or provide 
-                onboarding support to ensure you get the most out of Axiusflow.
+                Join the waitlist, request a demo, or tell us which charting, journaling,
+                broker import, and replay workflow you want Axiusflow to support first.
               </p>
 
               {/* Benefits List */}
@@ -65,11 +65,11 @@ export default function ContactPage() {
 
               <p className="text-[15px] af-text-secondary mb-12">
                 For product support,{" "}
-                <Link href="#" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
-                  visit our Help Center
+                <Link href="/contact" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
+                  contact the team
                 </Link>
                 . Or, get advice from traders in our{" "}
-                <Link href="#" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
+                <Link href="https://discord.gg/e62CkyJVDq" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
                   Discord community
                 </Link>
                 .
@@ -80,7 +80,7 @@ export default function ContactPage() {
 
               {/* Stats Section */}
               <h2 className="font-display text-2xl font-semibold af-text-primary mb-8">
-                Elevate Your Trading with Axiusflow
+                Build a Better Trading Review Workflow
               </h2>
 
               <div className="grid grid-cols-2 gap-8">
@@ -139,7 +139,7 @@ export default function ContactPage() {
                 {/* Company Name */}
                 <div>
                   <label className="block text-[14px] font-medium af-text-primary mb-2">
-                    Company name*
+                    Company or trading desk
                   </label>
                   <input
                     type="text"
@@ -151,7 +151,7 @@ export default function ContactPage() {
                 {/* Job Title */}
                 <div>
                   <label className="block text-[14px] font-medium af-text-primary mb-2">
-                    Job title*
+                    Role or trading style
                   </label>
                   <input
                     type="text"
@@ -196,11 +196,11 @@ export default function ContactPage() {
                   Axiusflow needs the contact information you provide to us to contact you 
                   about our products and services. You may opt out from these communications 
                   at any time. By submitting your information, you agree to Axiusflow&apos;s{" "}
-                  <Link href="#" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
+                  <Link href="/terms" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="#" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
+                  <Link href="/privacy" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
                     Privacy Policy
                   </Link>
                   .

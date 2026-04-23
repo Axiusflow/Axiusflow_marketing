@@ -200,12 +200,12 @@ export function Header({ variant = "full", showGetStarted = true }: HeaderProps)
                 )}
               </button>
             )}
-          <Link href="#" className="rounded-[8px] px-3 py-2 text-[15px] font-medium af-text-primary transition-colors af-nav-hover">
-            Sign in
+          <Link href="/contact" className="rounded-[8px] px-3 py-2 text-[15px] font-medium af-text-primary transition-colors af-nav-hover">
+            Contact
           </Link>
           {showGetStarted && (
-            <Link href="#" className="rounded-[8px] px-4 py-1.5 text-[15px] font-medium af-header-cta transition-colors">
-              Get Started
+            <Link href="/#waitlist" className="rounded-[8px] px-4 py-1.5 text-[15px] font-medium af-header-cta transition-colors">
+              Join Waitlist
             </Link>
           )}
         </div>
@@ -274,19 +274,19 @@ export function Header({ variant = "full", showGetStarted = true }: HeaderProps)
                 </Link>
                 <div className="my-2 border-t border-gray-200/50 dark:border-white/10" />
                 <Link 
-                  href="#" 
+                  href="/contact"
                   className="rounded-[8px] px-3 py-2.5 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Sign in
+                  Contact
                 </Link>
                 {showGetStarted && (
                   <Link 
-                    href="#" 
+                    href="/#waitlist"
                     className="mt-2 rounded-[8px] px-4 py-2.5 text-center text-[15px] font-medium af-header-cta transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Get Started
+                    Join Waitlist
                   </Link>
                 )}
               </div>

@@ -14,7 +14,7 @@ export default function StoryPage() {
         <article className="mx-auto max-w-[720px]">
           {/* Hero Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="pt-16 pb-12 text-center lg:pt-24 lg:pb-16"
@@ -32,7 +32,7 @@ export default function StoryPage() {
 
           {/* Founder Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-16 flex flex-col items-center gap-4"
@@ -48,7 +48,7 @@ export default function StoryPage() {
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="prose-content space-y-8"
@@ -66,7 +66,7 @@ export default function StoryPage() {
               </p>
               <p className="mt-4 text-[16px] leading-[1.8] af-text-secondary">
                 Axiusflow was born from a simple yet ambitious idea — to build a <strong className="af-text-primary font-medium">centralized 
-                trading operating system</strong> where you can chart, journal, connect brokers, and execute trades, 
+                trading operating system</strong> where you can chart, journal, import broker history, replay trades,
                 all in one seamless environment. No more tab-switching. No more scattered data. Just one 
                 unified platform designed for the way traders actually work.
               </p>
@@ -91,7 +91,7 @@ export default function StoryPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full af-bg-text-primary" />
-                  <span><strong className="af-text-primary font-medium">Multi-Broker Connectivity</strong> — Connect your favorite brokers and manage everything from one dashboard.</span>
+                  <span><strong className="af-text-primary font-medium">Broker Imports & Sync</strong> — Bring trade history into one dashboard while supported broker workflows expand.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full af-bg-text-primary" />
@@ -156,7 +156,7 @@ export default function StoryPage() {
 
           {/* CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-16 text-center"

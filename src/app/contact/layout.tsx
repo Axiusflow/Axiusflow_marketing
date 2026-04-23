@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Support",
+  title: "Contact Axiusflow",
   description:
-    "Need help with your Axiusflow charting platform or trading journal? Reach out to our support team and get fast assistance.",
+    "Contact Axiusflow to join the waitlist, request a trading journal demo, discuss broker imports, or share your charting and replay workflow.",
   alternates: {
     canonical: "https://axiusflow.com/contact",
   },

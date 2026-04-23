@@ -5,6 +5,16 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import {
+  ogImageUrl,
+  ogImageHeight,
+  ogImageWidth,
+  seoKeywords,
+  siteDescription,
+  siteName,
+  siteTitle,
+  siteUrl,
+} from "@/lib/seo";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -19,45 +29,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://axiusflow.com"),
+  metadataBase: new URL(siteUrl),
+  applicationName: siteName,
   title: {
-    default: "Axiusflow | Cloud Charting & Integrated Trading Platform",
-    template: "%s | Axiusflow",
+    default: siteTitle,
+    template: `%s | ${siteName}`,
   },
-  description:
-    "Axiusflow brings cloud-native charting, real-time market data, trade replay, and an integrated trading journal into one deliberate review loop for active traders and investors.",
-  keywords: [
-    "trading platform",
-    "cloud charting",
-    "trading journal",
-    "financial charting tools",
-    "real-time market data",
-    "multi-timeframe analysis",
-    "trading terms",
-    "in trading terms",
-    "stock market analysis",
-    "day trading software",
-    "broker integrations",
-  ],
-  authors: [{ name: "Axiusflow Team", url: "https://axiusflow.com" }],
-  creator: "Axiusflow",
-  publisher: "Axiusflow",
+  description: siteDescription,
+  keywords: seoKeywords,
+  authors: [{ name: "Axiusflow Team", url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  category: "finance",
+  alternates: {
+    canonical: "/",
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "Axiusflow | Advanced Cloud Charting & Trading Journal",
-    description: "Cloud-native charting, real-time market data, and an integrated trading journal. Professional-grade tools to analyze markets and execute trades.",
-    url: "https://axiusflow.com",
-    siteName: "Axiusflow",
+    title: "Axiusflow - Trading Journal, Replay & AI Review Platform",
+    description: siteDescription,
+    url: siteUrl,
+    siteName,
     images: [
       {
-        url: "/brand/og-image.jpg", // Ensure this image exists or serves as a placeholder
-        width: 1200,
-        height: 630,
-        alt: "Axiusflow Platform Preview",
+        url: ogImageUrl,
+        width: ogImageWidth,
+        height: ogImageHeight,
+        alt: "Axiusflow trading journal, replay, AI review, and crypto charting workspace",
       },
     ],
     locale: "en_US",
@@ -65,10 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axiusflow | Professional Trading & Charting Platform",
-    description: "Cloud-native charting, real-time market data, and an integrated trading journal.",
-    creator: "@axiusflow", // Optional: Update if there is an official handle
-    images: ["/brand/og-image.jpg"],
+    title: "Axiusflow - Trading Journal, Replay & AI Review Platform",
+    description: siteDescription,
+    images: [ogImageUrl],
   },
   robots: {
     index: true,

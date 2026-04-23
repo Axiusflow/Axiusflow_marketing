@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Changelog & Updates",
+  title: "Changelog for Trading Journal, Replay & AI Review",
   description:
-    "Discover the latest features, enhancements, and bug fixes for the Axiusflow trading platform. See how we're improving your charting and journaling experience.",
+    "Follow Axiusflow product updates across live crypto charting, trading journal analytics, trade replay, AI reviews, broker imports, and performance improvements.",
   alternates: {
     canonical: "https://axiusflow.com/changelog",
   },

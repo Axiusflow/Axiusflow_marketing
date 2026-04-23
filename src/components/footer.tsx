@@ -1078,18 +1078,18 @@ export const siteConfig = {
         <path d="M2.37845 10.5993L2.57045 10.4893L6.88445 12.9533C7.22435 13.1474 7.60901 13.2496 8.00045 13.2496C8.39189 13.2496 8.77656 13.1474 9.11645 12.9533L13.4305 10.4883L13.6225 10.5983C13.7374 10.6638 13.833 10.7586 13.8994 10.8731C13.9659 10.9875 14.0009 11.1175 14.0009 11.2498C14.0009 11.3821 13.9659 11.5121 13.8994 11.6265C13.833 11.7409 13.7374 11.8357 13.6225 11.9013L8.37245 14.9013C8.25915 14.966 8.13093 15 8.00045 15C7.86997 15 7.74175 14.966 7.62845 14.9013L2.37845 11.9013C2.2635 11.8357 2.16795 11.7409 2.10148 11.6265C2.03501 11.5121 2 11.3821 2 11.2498C2 11.1175 2.03501 10.9875 2.10148 10.8731C2.16795 10.7586 2.2635 10.6638 2.37845 10.5983V10.5993Z" />
       </svg>
     ),
-    badge: "Introducing custom automations",
-    title: "Meet your AI Agent Streamline your workflow",
+    badge: "Trading journal, replay, and AI review",
+    title: "Axiusflow trading OS",
     description:
-      "AI assistant designed to streamline your digital workflows and handle mundane tasks, so you can focus on what truly matters",
+      "A crypto-first trading workspace for charting, journaling, replay, AI reviews, broker imports, and performance analytics.",
     cta: {
       primary: {
-        text: "Try for Free",
-        href: "#",
+        text: "Join Waitlist",
+        href: "/#waitlist",
       },
       secondary: {
-        text: "Log in",
-        href: "#",
+        text: "Contact",
+        href: "/contact",
       },
     },
   },
@@ -1097,10 +1097,10 @@ export const siteConfig = {
     {
       title: "Company",
       links: [
-        { id: 1, title: "About", url: "#" },
+        { id: 1, title: "Story", url: "/story" },
         { id: 2, title: "Contact", url: "/contact" },
-        { id: 3, title: "Blog", url: "#" },
-                  { id: 4, title: "Story", url: "/story" },
+        { id: 3, title: "Pricing", url: "/pricing" },
+        { id: 4, title: "Changelog", url: "/changelog" },
       ],
     },
     {
@@ -1145,15 +1145,16 @@ export const Component = () => {
           <p className="tracking-tight text-muted-foreground font-medium">
             {siteConfig.hero.description}
           </p>
-          <div className="flex items-center gap-2 dark:hidden">
-            <Icons.soc2 className="size-12" />
-            <Icons.hipaa className="size-12" />
-            <Icons.gdpr className="size-12" />
-          </div>
-          <div className="dark:flex items-center gap-2 hidden">
-            <Icons.soc2Dark className="size-12" />
-            <Icons.hipaaDark className="size-12" />
-            <Icons.gdprDark className="size-12" />
+          <div className="flex flex-wrap items-center gap-2">
+            {["Encrypted records", "Scoped broker access", "Trader-owned data"].map((label) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-1.5 rounded-[8px] border border-border px-2.5 py-1 text-xs font-medium text-muted-foreground"
+              >
+                <Icons.logo className="size-3" />
+                {label}
+              </span>
+            ))}
           </div>
         </div>
         <div className="pt-5 md:w-1/2">
@@ -1183,7 +1184,7 @@ export const Component = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
         <div className="absolute inset-0 mx-6">
           <FlickeringGrid
-            text={tablet ? "Axiusflow" : "Streamline your workflow"}
+            text={tablet ? "Axiusflow" : "Review every trade"}
             fontSize={tablet ? 70 : 90}
             className="h-full w-full"
             squareSize={2}

@@ -12,14 +12,13 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
-// Broker logos from the public folder
 const brokers = [
+  { name: "Coinbase", logo: "/broker_logo/coinbase.png" },
+  { name: "Binance", logo: "/broker_logo/binance.png" },
+  { name: "Kraken", logo: "/broker_logo/kraken.png" },
   { name: "Interactive Brokers", logo: "/broker_logo/Ibkr.png" },
-  { name: "TD Ameritrade", logo: "/broker_logo/td_ameritrade.png" },
+  { name: "TradeStation", logo: "/broker_logo/tradestation.png" },
   { name: "TradingView", logo: "/broker_logo/tradingview.png" },
-  { name: "Robinhood", logo: "/broker_logo/robinhood.png" },
-  { name: "Webull", logo: "/broker_logo/webull.png" },
-  { name: "NinjaTrader", logo: "/broker_logo/ninjatrader.png" },
 ];
 
 // Card Visual Components
@@ -295,9 +294,9 @@ function TeamMembersVisual() {
       <div className="text-xs af-text-secondary mb-2">Connected (3)</div>
       <div className="space-y-2">
         {[
-          { name: 'Interactive Brokers', balance: '$48,250.00', status: 'Active', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/broker_logo/Ibkr.png' },
-          { name: 'TD Ameritrade', balance: '$12,840.50', status: 'Active', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/broker_logo/td_ameritrade.png' },
-          { name: 'Robinhood', balance: '$5,120.25', status: 'Paper', statusColor: 'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400', logo: '/broker_logo/robinhood.png' },
+          { name: 'Coinbase Import', balance: '142 trades', status: 'Synced', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/broker_logo/coinbase.png' },
+          { name: 'Broker CSV', balance: '88 trades', status: 'Ready', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/brand/logo_transparent.svg' },
+          { name: 'Manual Journal', balance: '24 notes', status: 'Review', statusColor: 'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400', logo: '/brand/logo_transparent.svg' },
         ].map((account, i) => (
           <div key={i} className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-white dark:bg-white/90 flex items-center justify-center overflow-hidden p-1">
@@ -319,15 +318,15 @@ function GroupBookingVisual() {
   return (
     <div className="w-full max-w-[200px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden shadow-sm">
       <div className="p-3 border-b border-gray-100 dark:border-white/5">
-        <div className="text-sm font-medium af-text-primary">Order Types</div>
-        <div className="text-xs af-text-secondary mt-1">Execute any strategy</div>
+        <div className="text-sm font-medium af-text-primary">Review Labels</div>
+        <div className="text-xs af-text-secondary mt-1">Find repeatable patterns</div>
       </div>
       <div className="p-3 space-y-2">
         {[
-          { type: 'Market', desc: 'Instant execution', color: 'bg-emerald-500' },
-          { type: 'Limit', desc: 'Set your price', color: 'bg-blue-500' },
-          { type: 'Stop Loss', desc: 'Protect positions', color: 'bg-red-500' },
-          { type: 'OCO', desc: 'One cancels other', color: 'bg-purple-500' },
+          { type: 'Entry', desc: 'Setup context', color: 'bg-emerald-500' },
+          { type: 'Exit', desc: 'Decision review', color: 'bg-blue-500' },
+          { type: 'Risk', desc: 'Stop discipline', color: 'bg-red-500' },
+          { type: 'Mistake', desc: 'Behavior tag', color: 'bg-purple-500' },
         ].map((order, i) => (
           <div key={i} className="flex items-center gap-2">
             <div className={`w-2 h-2 rounded-full ${order.color}`} />
@@ -394,8 +393,8 @@ export function BentoDemo() {
     <BentoGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {/* Row 1: 3 equal cards */}
       <BentoCard
-        title="Broker Integrations"
-        description="Connect to 15+ brokers and trading platforms with one-click setup."
+        title="Broker Imports & Sync Roadmap"
+        description="Bring CSV imports and supported sync workflows into one journal while new broker connections are added deliberately."
       >
         <IntegrationsVisual />
       </BentoCard>
@@ -408,8 +407,8 @@ export function BentoDemo() {
       </BentoCard>
 
       <BentoCard
-        title="Global Market Coverage"
-        description="Trade markets across any timezone with automatic session detection and market hours."
+        title="Market Session Context"
+        description="Review trades with the session, timezone, and market context that shaped each decision."
       >
         <TimezoneVisual />
       </BentoCard>
@@ -424,16 +423,16 @@ export function BentoDemo() {
       </BentoCard>
 
       <BentoCard
-        title="Multi-Account Management"
-        description="Manage multiple trading accounts and portfolios from a single dashboard."
+        title="Multi-Source Journal"
+        description="Unify crypto, CSV, manual, and future broker-sync trade history in one review surface."
       >
         <TeamMembersVisual />
       </BentoCard>
 
       {/* Row 3: 3 equal cards */}
       <BentoCard
-        title="Advanced Order Types"
-        description="From market orders to complex brackets and OCO, execute any strategy with precision."
+        title="Trade Review Playbooks"
+        description="Tag entries, exits, risk decisions, and mistakes so every replay becomes searchable."
       >
         <GroupBookingVisual />
       </BentoCard>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import {
   ArrowRight01Icon,
   Cancel01Icon,
@@ -15,7 +15,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { NoiseBackground } from "@/components/ui/noise-background";
 import { BentoDemo } from "@/components/bento-demo";
 import { FAQSection } from "@/components/faq-section";
 import { Component as Footer } from "@/components/footer";
@@ -28,6 +27,49 @@ export function AxiusflowLandingPage() {
   const { theme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(subscribe, () => true, () => false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [submissionState, setSubmissionState] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [submissionMessage, setSubmissionMessage] = useState("");
+
+  async function submitWaitlist(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      setSubmissionState("error");
+      setSubmissionMessage("Enter your email.");
+      return;
+    }
+
+    setSubmissionState("submitting");
+    setSubmissionMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error ?? "Could not submit.");
+      }
+
+      setSubmissionState("success");
+      setSubmissionMessage("You're on the list.");
+      setEmail("");
+    } catch (error) {
+      setSubmissionState("error");
+      setSubmissionMessage(
+        error instanceof Error ? error.message : "Could not submit.",
+      );
+    }
+  }
 
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
@@ -76,11 +118,11 @@ export function AxiusflowLandingPage() {
                 )}
               </button>
             )}
-            <Link href="#" className="rounded-[8px] px-3 py-2 text-[15px] font-medium af-text-primary transition-colors af-nav-hover">
-              Sign in
+            <Link href="/contact" className="rounded-[8px] px-3 py-2 text-[15px] font-medium af-text-primary transition-colors af-nav-hover">
+              Contact
             </Link>
-            <Link href="#" className="rounded-[8px] px-4 py-1.5 text-[15px] font-medium af-header-cta transition-colors">
-              Get Started
+            <Link href="/#waitlist" className="rounded-[8px] px-4 py-1.5 text-[15px] font-medium af-header-cta transition-colors">
+              Join Waitlist
             </Link>
           </div>
 
@@ -148,18 +190,18 @@ export function AxiusflowLandingPage() {
                   </Link>
                   <div className="my-2 border-t border-gray-200/50 dark:border-white/10" />
                   <Link 
-                    href="#" 
+                    href="/contact"
                     className="rounded-[8px] px-3 py-2.5 text-[15px] font-medium af-text-primary transition-colors af-nav-hover"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Sign in
+                    Contact
                   </Link>
                   <Link 
-                    href="#" 
+                    href="/#waitlist"
                     className="mt-2 rounded-[8px] px-4 py-2.5 text-center text-[15px] font-medium af-header-cta transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Get Started
+                    Join Waitlist
                   </Link>
                 </div>
               </nav>
@@ -178,7 +220,7 @@ export function AxiusflowLandingPage() {
               
               {/* Badge */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-gray-200/80 bg-white/85 px-4 py-1.5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
@@ -188,54 +230,76 @@ export function AxiusflowLandingPage() {
                   <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
                 </svg>
                 <span className="text-[14px] font-medium af-text-secondary transition-colors">
-                  New: Real-time data from 50+ global exchanges
+                  Live crypto charts, journal, replay, and AI trade reviews
                 </span>
               </motion.div>
 
               {/* Headline */}
               <motion.h1
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="font-display mx-auto max-w-[980px] text-[clamp(42px,4.7vw,68px)] font-medium leading-[0.98] tracking-[-0.035em] af-text-primary transition-colors"
               >
-                Advanced Charting & Trading Analytics<br />Built for Serious Traders
+                Trading Journal, Replay & AI Review<br />Built for Serious Traders
               </motion.h1>
 
               {/* Subheadline */}
               <motion.p
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="mx-auto mt-6 max-w-[640px] text-[18px] leading-[1.5] af-text-secondary transition-colors"
               >
-                Axiusflow delivers real-time market data, professional charting tools, in-depth technical analysis, and seamless broker integrations—all in one high-performance cloud platform.
+                Axiusflow combines live crypto charting, trade journaling, broker imports, replay, and AI-powered session reviews so active traders can improve without stitching together five tools.
               </motion.p>
 
-              {/* CTA Button */}
+              {/* Waitlist form */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="mt-8 flex justify-center"
               >
-                <NoiseBackground
-                  containerClassName="w-fit p-2 rounded-full mx-auto"
-                  gradientColors={[
-                    "rgb(255, 100, 150)",
-                    "rgb(100, 150, 255)",
-                    "rgb(255, 200, 100)",
-                  ]}
+                <form
+                  id="waitlist"
+                  onSubmit={submitWaitlist}
+                  className="mx-auto flex w-full max-w-[520px] flex-col gap-3 sm:flex-row"
                 >
-                  <Link
-                    href="#"
-                    className="inline-flex h-full w-full cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-neutral-100 via-neutral-100 to-white px-6 py-2.5 text-[16px] font-medium text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-[0.98] dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
+                  <label htmlFor="waitlist-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="waitlist-email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="you@example.com"
+                    className="min-h-12 flex-1 rounded-full border border-gray-200/90 bg-white/90 px-5 text-[15px] text-neutral-950 outline-none transition-colors placeholder:text-neutral-400 focus:border-neutral-400 dark:border-white/10 dark:bg-white/7 dark:text-white dark:placeholder:text-white/35 dark:focus:border-white/35"
+                  />
+                  <button
+                    type="submit"
+                    disabled={submissionState === "submitting"}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-[15px] font-medium text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                   >
-                    Get Started
+                    {submissionState === "submitting" ? "Submitting" : "Join"}
                     <HugeiconsIcon icon={ArrowRight01Icon} className="h-4 w-4" />
-                  </Link>
-                </NoiseBackground>
+                  </button>
+                </form>
               </motion.div>
+              {submissionMessage ? (
+                <p
+                  className={`mt-3 text-[14px] ${
+                    submissionState === "error"
+                      ? "text-red-600 dark:text-red-400"
+                      : "af-text-secondary"
+                  }`}
+                  role="status"
+                >
+                  {submissionMessage}
+                </p>
+              ) : null}
             </div>
 
             {/* Hero Image */}
@@ -243,12 +307,39 @@ export function AxiusflowLandingPage() {
               <div className="overflow-hidden rounded-[10px]">
                 <Image
                   src="/hero_image.png"
-                  alt="Axiusflow platform hero preview"
+                  alt="Axiusflow trading journal, live crypto charting, trade replay, and AI review dashboard"
                   width={1600}
                   height={900}
                   priority
                   className="h-auto w-full"
                 />
+              </div>
+            </div>
+
+            <div className="mx-auto mt-14 grid max-w-[1040px] grid-cols-1 gap-8 px-6 text-left md:grid-cols-3">
+              <div>
+                <h2 className="font-display text-[20px] font-semibold af-text-primary">
+                  A TradingView alternative for review, not just charts
+                </h2>
+                <p className="mt-3 text-[15px] leading-[1.7] af-text-secondary">
+                  Keep chart context, journal notes, mistakes, screenshots, and replay inside one workflow instead of spreading your process across separate apps.
+                </p>
+              </div>
+              <div>
+                <h2 className="font-display text-[20px] font-semibold af-text-primary">
+                  AI trading journal for post-session decisions
+                </h2>
+                <p className="mt-3 text-[15px] leading-[1.7] af-text-secondary">
+                  Review entries, exits, risk, tags, and recurring behavior with AI assistance built around your own trading history.
+                </p>
+              </div>
+              <div>
+                <h2 className="font-display text-[20px] font-semibold af-text-primary">
+                  Crypto-first data, broker workflows next
+                </h2>
+                <p className="mt-3 text-[15px] leading-[1.7] af-text-secondary">
+                  Start with live crypto charting and imports while the platform expands broker sync and licensed exchange feeds transparently.
+                </p>
               </div>
             </div>
           </section>
@@ -258,7 +349,7 @@ export function AxiusflowLandingPage() {
         <section className="af-page-bg pb-24 pt-8 transition-colors duration-300 lg:pt-10">
           <div className="mx-auto max-w-[1000px] px-6">
             <h2 className="mb-8 text-center text-[14px] font-medium uppercase tracking-wider af-text-secondary">
-              Trusted integrations with leading brokers & trading platforms
+              Built around broker, exchange, and charting workflows traders already use
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
               <Image src="/broker_logo/tradingview.png" alt="TradingView" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
@@ -280,16 +371,15 @@ export function AxiusflowLandingPage() {
                 <div className="mb-4 inline-flex items-center gap-2 rounded-[8px] border border-gray-200/80 bg-gray-50/80 px-4 py-1.5 dark:border-white/10 dark:bg-white/5">
                   <HugeiconsIcon icon={Layers01Icon} className="h-4 w-4 af-text-secondary" />
                   <span className="text-[13px] font-medium af-text-secondary">
-                    One Stop Solution
+                    Trading OS
                   </span>
               </div>
               <h2 className="font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-[1.1] tracking-[-0.02em] af-text-primary">
-                Why Choose Axiusflow for Trading?
+                Trading Journal, Replay, and Analytics in One Workspace
               </h2>
               <p className="mx-auto mt-4 max-w-[680px] text-[16px] leading-[1.6] af-text-secondary">
-                Whether you&apos;re a day trader analyzing tick data, a swing trader looking for setups, or a long-term investor, 
-                Axiusflow provides the professional-grade charting tools to analyze markets, execute 
-                trades, and seamlessly manage your trading journal with confidence.
+                Whether you&apos;re reviewing day trades, swing setups, crypto sessions, or imported broker history,
+                Axiusflow helps you connect chart context to decisions, outcomes, risk, and repeatable lessons.
               </p>
             </div>
 

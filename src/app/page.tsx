@@ -1,55 +1,93 @@
 import { AxiusflowLandingPage } from "@/components/axiusflow-landing";
-import Script from "next/script";
+import {
+  faqItems,
+  ogImageHeight,
+  ogImageUrl,
+  ogImageWidth,
+  siteDescription,
+  siteName,
+  siteUrl,
+} from "@/lib/seo";
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Axiusflow",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web, Cloud",
-    "description": "Cloud-native charting, real-time market data, and an integrated trading journal for professional traders and investors. Seamless broker integrations included.",
-    "url": "https://axiusflow.com",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Axiusflow",
-      "url": "https://axiusflow.com",
-      "logo": "https://axiusflow.com/brand/logo_transparent.svg",
-      "sameAs": [
-        "https://twitter.com/axiusflow",
-        "https://instagram.com/axiusflow",
-        "https://discord.gg/e62CkyJVDq"
-      ]
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "description": "Free tier available for basic charting and journaling."
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "ratingCount": "1",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "featureList": [
-      "Multi-Timeframe Analysis",
-      "Real-time Market Data",
-      "Integrated Trading Journal",
-      "Smart Price Alerts",
-      "Global Market Sessions",
-      "Broker Integrations"
-    ]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        name: siteName,
+        url: siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/brand/logo_transparent.svg`,
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        name: siteName,
+        url: siteUrl,
+        publisher: {
+          "@id": `${siteUrl}/#organization`,
+        },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${siteUrl}/#software`,
+        name: siteName,
+        applicationCategory: "FinanceApplication",
+        operatingSystem: "Web",
+        url: siteUrl,
+        image: {
+          "@type": "ImageObject",
+          url: ogImageUrl,
+          width: ogImageWidth,
+          height: ogImageHeight,
+        },
+        description: siteDescription,
+        publisher: {
+          "@id": `${siteUrl}/#organization`,
+        },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Contact Axiusflow for current access and launch pricing.",
+        },
+        featureList: [
+          "Live crypto charting",
+          "Trading journal",
+          "Trade replay",
+          "AI-powered trade reviews",
+          "Broker and CSV trade imports",
+          "Performance analytics",
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${siteUrl}/#faq`,
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      },
+    ],
   };
 
   return (
     <>
-      <Script
+      <script
         id="schema-jsonld"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <AxiusflowLandingPage />
     </>

@@ -8,10 +8,10 @@ import { Component as Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 const plans = [
-  { name: "Basic", cta: "Get started", ctaLink: "#", highlight: false },
-  { name: "Pro", cta: "Get started", ctaLink: "#", highlight: true },
-  { name: "Premium", cta: "Get started", ctaLink: "#", highlight: false },
-  { name: "Enterprise", cta: "Talk to us", ctaLink: "#", highlight: false },
+  { name: "Basic", cta: "Join waitlist", ctaLink: "/#waitlist", highlight: false },
+  { name: "Pro", cta: "Join waitlist", ctaLink: "/#waitlist", highlight: true },
+  { name: "Premium", cta: "Join waitlist", ctaLink: "/#waitlist", highlight: false },
+  { name: "Enterprise", cta: "Talk to us", ctaLink: "/contact", highlight: false },
 ];
 
 type FeatureValue = boolean | string;
@@ -28,7 +28,7 @@ interface FeatureCategory {
 
 const featureCategories: FeatureCategory[] = [
   {
-    category: "Trading Tools",
+    category: "Trading Workspace",
     features: [
       { name: "Advanced Charting", values: [true, true, true, true] },
       { name: "Chart Layouts", values: ["1", "4", "8", "Unlimited"] },
@@ -39,14 +39,14 @@ const featureCategories: FeatureCategory[] = [
     ],
   },
   {
-    category: "Trade Execution",
+    category: "Imports & Data",
     features: [
-      { name: "One-Click Trading", values: [true, true, true, true] },
-      { name: "Broker Connections", values: ["1", "3", "5", "Unlimited"] },
-      { name: "Order Types", values: ["Basic", "Advanced", "Advanced", "Custom"] },
-      { name: "Paper Trading", values: [true, true, true, true] },
-      { name: "Multi-Account Trading", values: [false, true, true, true] },
-      { name: "Algorithmic Trading", values: [false, false, true, true] },
+      { name: "Trade Imports", values: ["CSV", "CSV", "CSV + assisted", "Custom"] },
+      { name: "Broker Sync Workflows", values: [false, "Roadmap", "Priority roadmap", "Custom"] },
+      { name: "Crypto Live Data", values: [true, true, true, true] },
+      { name: "Market Replay", values: ["Basic", "Advanced", "Advanced", "Custom"] },
+      { name: "Multi-Source Journal", values: [false, true, true, true] },
+      { name: "Premium Exchange Data", values: [false, false, "Add-on", "Custom"] },
     ],
   },
   {
@@ -63,8 +63,8 @@ const featureCategories: FeatureCategory[] = [
   {
     category: "AI Features",
     features: [
-      { name: "Trade Insights", values: [false, true, true, true] },
-      { name: "Pattern Recognition", values: [false, false, true, true] },
+      { name: "AI Trade Review", values: [false, true, true, true] },
+      { name: "Setup Pattern Tags", values: [false, false, true, true] },
       { name: "Risk Analysis", values: [false, true, true, true] },
       { name: "AI Assistant", values: [false, false, true, true] },
     ],
@@ -189,17 +189,17 @@ export default function PricingPage() {
             Ready to elevate your trading?
           </h2>
           <p className="af-text-secondary mb-8">
-            Start with our free Basic plan and upgrade anytime. No credit card required.
+            Join the launch waitlist and we will map your charting, journaling, replay, and import workflow before you choose a plan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="#"
+              href="/#waitlist"
               className="af-hero-cta px-8 py-3 rounded-full font-medium text-sm transition-colors"
             >
-              Start Free
+              Join Waitlist
             </Link>
             <Link
-              href="#"
+              href="/contact"
               className="af-header-cta px-8 py-3 rounded-full font-medium text-sm transition-colors"
             >
               Contact Sales

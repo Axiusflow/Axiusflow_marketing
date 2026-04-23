@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pricing Plans",
+  title: "Pricing for Trading Journal, Replay & AI Review",
   description:
-    "Choose the right plan for your trading journey. Axiusflow offers flexible pricing for day traders, swing traders, and active investors.",
+    "Compare Axiusflow plans for live crypto charting, trade journaling, trade replay, AI-powered review, broker imports, and trading performance analytics.",
   alternates: {
     canonical: "https://axiusflow.com/pricing",
   },
