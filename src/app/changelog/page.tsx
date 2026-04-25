@@ -135,7 +135,7 @@ export default function ChangelogPage() {
                       {/* Top section - Logo */}
                       <div className="flex items-center gap-2">
                         <Image
-                          src="/brand/logo.svg"
+                          src="/logo.svg"
                           alt="Axiusflow"
                           width={20}
                           height={20}

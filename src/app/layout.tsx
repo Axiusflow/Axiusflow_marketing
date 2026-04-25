@@ -83,9 +83,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/brand/logo_transparent.svg",
-    shortcut: "/brand/logo_transparent.svg",
-    apple: "/brand/logo_transparent.svg",
+    icon: "/logo_transparent.svg",
+    shortcut: "/logo_transparent.svg",
+    apple: "/logo_transparent.svg",
   },
 };
 

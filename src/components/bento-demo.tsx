@@ -65,7 +65,7 @@ function IntegrationsVisual() {
         className="relative z-20 w-16 h-16 rounded-full bg-blue-500 border-2 border-blue-600 shadow-lg flex items-center justify-center overflow-hidden"
       >
         <Image
-          src="/brand/logo_transparent.svg"
+          src="/logo_transparent.svg"
           alt="Axiusflow"
           width={40}
           height={40}
@@ -295,8 +295,8 @@ function TeamMembersVisual() {
       <div className="space-y-2">
         {[
           { name: 'Coinbase Import', balance: '142 trades', status: 'Synced', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/broker_logo/coinbase.png' },
-          { name: 'Broker CSV', balance: '88 trades', status: 'Ready', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/brand/logo_transparent.svg' },
-          { name: 'Manual Journal', balance: '24 notes', status: 'Review', statusColor: 'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400', logo: '/brand/logo_transparent.svg' },
+          { name: 'Broker CSV', balance: '88 trades', status: 'Ready', statusColor: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400', logo: '/logo_transparent.svg' },
+          { name: 'Manual Journal', balance: '24 notes', status: 'Review', statusColor: 'bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400', logo: '/logo_transparent.svg' },
         ].map((account, i) => (
           <div key={i} className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-white dark:bg-white/90 flex items-center justify-center overflow-hidden p-1">

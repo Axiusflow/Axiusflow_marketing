@@ -79,7 +79,7 @@ export function AxiusflowLandingPage() {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <Image
-                src="/brand/logo.svg"
+                src="/logo.svg"
                 alt="Axiusflow logo"
                 width={24}
                 height={24}

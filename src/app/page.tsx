@@ -20,7 +20,7 @@ export default function Home() {
         url: siteUrl,
         logo: {
           "@type": "ImageObject",
-          url: `${siteUrl}/brand/logo_transparent.svg`,
+          url: `${siteUrl}/logo_transparent.svg`,
         },
       },
       {

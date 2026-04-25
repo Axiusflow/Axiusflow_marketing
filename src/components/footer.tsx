@@ -1134,7 +1134,7 @@ export const Component = () => {
         <div className="flex flex-col items-start justify-start gap-y-5 max-w-xs mx-0">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/brand/logo.svg"
+              src="/logo.svg"
               alt="Axiusflow logo"
               width={32}
               height={32}
