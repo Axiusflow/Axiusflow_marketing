@@ -1,4 +1,4 @@
-export const siteUrl = "https://axiusflow.com";
+export const siteUrl = "https://www.axiusflow.com";
 export const siteName = "Axiusflow";
 export const ogImageUrl = `${siteUrl}/og_image.png`;
 export const ogImageWidth = 1731;
