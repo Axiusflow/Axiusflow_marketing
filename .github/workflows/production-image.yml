@@ -1,0 +1,76 @@
+name: Build and Deploy Landing Image
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy landing to production after image is pushed
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  LANDING_IMAGE: ghcr.io/axiusflow/axiusflow-landing
+
+jobs:
+  build:
+    name: Build landing image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push landing image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.LANDING_IMAGE }}:production
+            ${{ env.LANDING_IMAGE }}:sha-${{ github.sha }}
+          cache-from: type=gha,scope=landing
+          cache-to: type=gha,scope=landing,mode=max
+
+  deploy:
+    name: Deploy landing
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' || github.event.inputs.deploy == 'true'
+    environment: production
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            set -euo pipefail
+            printf '%s' '${{ secrets.GHCR_READ_TOKEN }}' | docker login ghcr.io -u '${{ github.actor }}' --password-stdin
+            cd /srv/axiusflow/runtime
+            docker compose -f production.compose.yml --env-file .env pull landing
+            docker compose -f production.compose.yml --env-file .env up -d landing
+            docker image prune -af --filter "until=168h"
+            docker compose -f production.compose.yml --env-file .env ps landing
