@@ -52,9 +52,9 @@ export default function Home() {
         },
         offers: {
           "@type": "Offer",
-          price: "0",
+          price: "20",
           priceCurrency: "USD",
-          description: "Contact Axiusflow for current access and launch pricing.",
+          description: "Axiusflow Pro is available for $20 per month. A free plan is available for evaluation.",
         },
         featureList: [
           "Live crypto charting",

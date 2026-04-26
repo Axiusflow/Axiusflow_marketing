@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Pricing for Trading Journal, Replay & AI Review",
+  title: "Axiusflow Pricing: Free and Pro Trading Journal Plans",
   description:
-    "Compare Axiusflow plans for live crypto charting, trade journaling, trade replay, AI-powered review, broker imports, and trading performance analytics.",
+    "Compare Axiusflow Free and Pro plans. Start free or upgrade to Pro for $20/month to unlock the full trading journal, imports, analytics, and workspace.",
   alternates: {
     canonical: `${siteUrl}/pricing`,
   },
