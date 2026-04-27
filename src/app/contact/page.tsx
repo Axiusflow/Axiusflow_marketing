@@ -69,7 +69,7 @@ export default function ContactPage() {
                   contact the team
                 </Link>
                 . Or, get advice from traders in our{" "}
-                <Link href="https://discord.gg/e62CkyJVDq" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
+                <Link href="https://discord.gg/tDFDrKgKJm" className="text-[#7c3aed] dark:text-[#a78bfa] underline underline-offset-2">
                   Discord community
                 </Link>
                 .

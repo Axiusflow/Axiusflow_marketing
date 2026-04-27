@@ -1122,7 +1122,7 @@ export const siteConfig = {
       links: [
         { id: 5, title: "Twitter", url: "https://twitter.com/axiusflow" },
         { id: 6, title: "Instagram", url: "https://instagram.com/axiusflow" },
-        { id: 7, title: "Discord", url: "https://discord.gg/e62CkyJVDq" },
+        { id: 7, title: "Discord", url: "https://discord.gg/tDFDrKgKJm" },
       ],
     },
     {
