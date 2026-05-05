@@ -34,6 +34,23 @@ export function AxiusflowLandingPage() {
     <div className="min-h-screen af-page-bg transition-colors duration-300">
       {/* Header - Pure White, No Color */}
       <header className="relative z-50 af-page-bg transition-colors duration-300">
+        <div className="bg-gray-50/80 dark:bg-white/[0.03]">
+          <div className="mx-auto flex w-full max-w-[1240px] items-center justify-center gap-2 px-6 py-2.5 text-center text-[13px] leading-[1.4] sm:text-[14px]">
+            <span className="font-medium af-text-primary">
+              We&apos;re currently on a waitlist.
+            </span>
+            <span className="af-text-secondary">
+              Join now and we&apos;ll remind you as soon as Axiusflow goes live.
+            </span>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1 font-medium af-text-primary transition-opacity hover:opacity-70"
+            >
+              Join waitlist
+              <HugeiconsIcon icon={ArrowRight01Icon} className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </div>
         <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-6 py-5">
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
@@ -177,25 +194,14 @@ export function AxiusflowLandingPage() {
           <section className="relative z-10 pt-14 pb-[84px] lg:pt-[70px] lg:pb-[128px]">
             <div className="mx-auto max-w-[1260px] px-6 text-center">
               
-              {/* Badge */}
-              <div className="mb-7 inline-flex items-center gap-2 rounded-[8px] border border-gray-200/80 bg-white/85 px-4 py-1.5 dark:border-white/10 dark:bg-white/5">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="af-text-secondary transition-colors">
-                  <path d="M3 11l18-5v12L3 14v-3z" />
-                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-                </svg>
-                <span className="text-[14px] font-medium af-text-secondary transition-colors">
-                  Live crypto charts, journal, replay, and AI trade reviews
-                </span>
-              </div>
-
               {/* Headline */}
-              <h1 className="font-display mx-auto max-w-[980px] text-[clamp(42px,4.7vw,68px)] font-medium leading-[0.98] tracking-[-0.035em] af-text-primary transition-colors">
-                Trading Journal, Replay & AI Review<br />Built for Serious Traders
+              <h1 className="font-display mx-auto max-w-[860px] text-[clamp(36px,4.2vw,60px)] font-medium leading-[1.02] tracking-[-0.03em] af-text-primary transition-colors">
+                Review Every Trade in One Focused Workspace
               </h1>
 
               {/* Subheadline */}
-              <p className="mx-auto mt-6 max-w-[640px] text-[18px] leading-[1.5] af-text-secondary transition-colors">
-                Axiusflow combines live crypto charting, trade journaling, broker imports, replay, and AI-powered session reviews so active traders can improve without stitching together five tools.
+              <p className="mx-auto mt-6 max-w-[620px] text-[17px] leading-[1.65] af-text-secondary transition-colors sm:text-[18px]">
+                Axiusflow brings trade journaling, broker imports, auto sync workflows, replay, and AI trade reviews together so serious traders can study faster and improve with less noise.
               </p>
 
               {/* Production CTA */}
@@ -215,7 +221,7 @@ export function AxiusflowLandingPage() {
               <div className="overflow-hidden rounded-[10px]">
                 <Image
                   src={heroImageSrc}
-                  alt="Axiusflow trading journal, live crypto charting, trade replay, and AI review dashboard"
+                  alt="Axiusflow trading journal, broker sync, trade replay, and AI review dashboard"
                   width={1600}
                   height={900}
                   priority
@@ -227,10 +233,10 @@ export function AxiusflowLandingPage() {
             <div className="mx-auto mt-14 grid max-w-[1040px] grid-cols-1 gap-8 px-6 text-left md:grid-cols-3">
               <div>
                 <h2 className="font-display text-[20px] font-semibold af-text-primary">
-                  A TradingView alternative for review, not just charts
+                  One journal for imports, notes, replay, and review
                 </h2>
                 <p className="mt-3 text-[15px] leading-[1.7] af-text-secondary">
-                  Keep chart context, journal notes, mistakes, screenshots, and replay inside one workflow instead of spreading your process across separate apps.
+                  Keep journal notes, mistakes, screenshots, broker data, and replay inside one workflow instead of spreading your review process across separate apps.
                 </p>
               </div>
               <div>
@@ -243,10 +249,10 @@ export function AxiusflowLandingPage() {
               </div>
               <div>
                 <h2 className="font-display text-[20px] font-semibold af-text-primary">
-                  Crypto-first data, broker workflows next
+                  Multi-broker journal with deliberate auto sync rollout
                 </h2>
                 <p className="mt-3 text-[15px] leading-[1.7] af-text-secondary">
-                  Start with live crypto charting and imports while the platform expands broker sync and licensed exchange feeds transparently.
+                  Start with trade imports and supported sync workflows while Axiusflow expands broker coverage deliberately and transparently.
                 </p>
               </div>
             </div>
@@ -257,10 +263,9 @@ export function AxiusflowLandingPage() {
         <section className="af-page-bg pb-24 pt-8 transition-colors duration-300 lg:pt-10">
           <div className="mx-auto max-w-[1000px] px-6">
             <h2 className="mb-8 text-center text-[14px] font-medium uppercase tracking-wider af-text-secondary">
-              Built around broker, exchange, and charting workflows traders already use
+              Built around broker and exchange workflows traders already use
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
-              <Image src="/broker_logo/tradingview.png" alt="TradingView" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
               <Image src="/broker_logo/Ibkr.png" alt="Interactive Brokers" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
               <Image src="/broker_logo/td_ameritrade.png" alt="TD Ameritrade" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
               <Image src="/broker_logo/robinhood.png" alt="Robinhood" width={120} height={40} className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0" />
@@ -279,15 +284,15 @@ export function AxiusflowLandingPage() {
                 <div className="mb-4 inline-flex items-center gap-2 rounded-[8px] border border-gray-200/80 bg-gray-50/80 px-4 py-1.5 dark:border-white/10 dark:bg-white/5">
                   <HugeiconsIcon icon={Layers01Icon} className="h-4 w-4 af-text-secondary" />
                   <span className="text-[13px] font-medium af-text-secondary">
-                    Trading OS
+                    Smart Journal
                   </span>
               </div>
               <h2 className="font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-[1.1] tracking-[-0.02em] af-text-primary">
-                Trading Journal, Replay, and Analytics in One Workspace
+                Trading Journal, Replay, and Broker Sync in One Workspace
               </h2>
               <p className="mx-auto mt-4 max-w-[680px] text-[16px] leading-[1.6] af-text-secondary">
-                Whether you&apos;re reviewing day trades, swing setups, crypto sessions, or imported broker history,
-                Axiusflow helps you connect chart context to decisions, outcomes, risk, and repeatable lessons.
+                Whether you&apos;re reviewing day trades, swing setups, crypto sessions, or synced broker history,
+                Axiusflow helps you connect executions, notes, risk, and repeatable lessons in one review workflow.
               </p>
             </div>
 

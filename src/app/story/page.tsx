@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Component as Footer } from "@/components/footer";
@@ -8,7 +9,7 @@ import { Header } from "@/components/header";
 export default function StoryPage() {
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       <main className="px-6 pb-24">
         <article className="mx-auto max-w-[720px]">
@@ -23,10 +24,10 @@ export default function StoryPage() {
               Our Story
             </span>
             <h1 className="font-display text-[clamp(36px,5vw,56px)] font-semibold leading-[1.1] tracking-[-0.03em] af-text-primary">
-              Building the Future of Trading
+              Building a Smarter Trading Journal
             </h1>
             <p className="mt-6 text-[18px] leading-[1.7] af-text-secondary">
-              A solo founder&apos;s journey to create the centralized trading operating system that traders deserve.
+              A solo founder&apos;s journey to build the focused trading journal and review workflow that traders deserve.
             </p>
           </motion.div>
 
@@ -37,8 +38,15 @@ export default function StoryPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-16 flex flex-col items-center gap-4"
           >
-            <div className="h-20 w-20 rounded-full af-bg-text-primary flex items-center justify-center">
-              <span className="text-2xl font-semibold af-text-on-dark dark:af-text-on-light">D</span>
+            <div className="relative h-20 w-20 overflow-hidden rounded-full ring-1 ring-black/5 dark:ring-white/10">
+              <Image
+                src="/founder.jpg"
+                alt="Devraj, founder of Axiusflow"
+                fill
+                sizes="80px"
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="text-center">
               <p className="font-display text-[18px] font-semibold af-text-primary">Devraj</p>
@@ -60,15 +68,15 @@ export default function StoryPage() {
               </h2>
               <p className="text-[16px] leading-[1.8] af-text-secondary">
                 Hi, I&apos;m Devraj — the founder of Axiusflow. At 19 years old, I set out to solve a problem that 
-                every serious trader faces: the fragmentation of trading tools. Charting on one platform, 
-                journaling on another, broker connections scattered everywhere. It&apos;s chaos that costs traders 
+                every serious trader faces: the fragmentation of trading tools. Journaling in one place, 
+                broker connections scattered elsewhere, review notes buried across tabs. It&apos;s chaos that costs traders 
                 time, money, and mental clarity.
               </p>
               <p className="mt-4 text-[16px] leading-[1.8] af-text-secondary">
                 Axiusflow was born from a simple yet ambitious idea — to build a <strong className="af-text-primary font-medium">centralized 
-                trading operating system</strong> where you can chart, journal, import broker history, replay trades,
+                trading review workspace</strong> where you can journal, import broker history, sync supported accounts, and replay trades
                 all in one seamless environment. No more tab-switching. No more scattered data. Just one 
-                unified platform designed for the way traders actually work.
+                unified workspace designed for the way traders actually review and improve.
               </p>
             </section>
 
@@ -78,24 +86,24 @@ export default function StoryPage() {
                 What We&apos;re Building
               </h2>
               <p className="text-[16px] leading-[1.8] af-text-secondary">
-                Axiusflow is more than just another trading tool. It&apos;s a complete ecosystem that brings together:
+                Axiusflow is more than just another trading tool. It&apos;s a focused review product that brings together:
               </p>
               <ul className="mt-4 space-y-3 text-[16px] leading-[1.8] af-text-secondary">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full af-bg-text-primary" />
-                  <span><strong className="af-text-primary font-medium">Cloud-Native Charting</strong> — Professional-grade charts accessible from anywhere, on any device.</span>
+                  <span><strong className="af-text-primary font-medium">Integrated Trading Journal</strong> — A focused place for notes, tags, screenshots, and performance review.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full af-bg-text-primary" />
-                  <span><strong className="af-text-primary font-medium">Integrated Trading Journal</strong> — Automatic trade logging with deep analytics to help you learn from every position.</span>
+                  <span><strong className="af-text-primary font-medium">Broker Imports & Auto Sync</strong> — Bring trade history into one dashboard while supported broker workflows expand.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full af-bg-text-primary" />
-                  <span><strong className="af-text-primary font-medium">Broker Imports & Sync</strong> — Bring trade history into one dashboard while supported broker workflows expand.</span>
+                  <span><strong className="af-text-primary font-medium">Trade Replay</strong> — Review your trades with execution context, notes, and outcomes in one place.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full af-bg-text-primary" />
-                  <span><strong className="af-text-primary font-medium">Trade Replay</strong> — Review your trades in context, with full market replay capabilities.</span>
+                  <span><strong className="af-text-primary font-medium">AI Review & Analytics</strong> — Surface recurring mistakes, behavior patterns, and lessons worth repeating.</span>
                 </li>
               </ul>
             </section>
@@ -117,21 +125,19 @@ export default function StoryPage() {
               </p>
             </section>
 
-            {/* A Note on Market Data */}
+            {/* A Note on Broker Coverage */}
             <section>
               <h2 className="font-display mb-4 text-[24px] font-semibold tracking-[-0.02em] af-text-primary">
-                A Note on Market Data
+                A Note on Broker Coverage
               </h2>
               <p className="text-[16px] leading-[1.8] af-text-secondary">
-                Transparency matters. Right now, licensing market data from exchanges like CME comes with 
-                substantial costs that are challenging for an early-stage platform. We&apos;re being honest about 
-                this because you deserve to know.
+                Transparency matters. Reliable broker connectivity takes real engineering work, dependable APIs, 
+                and ongoing maintenance. We&apos;re being honest about that because you deserve to know what&apos;s live, 
+                what&apos;s import-based, and what&apos;s still on the roadmap.
               </p>
               <p className="mt-4 text-[16px] leading-[1.8] af-text-secondary">
-                Here&apos;s our commitment: <strong className="af-text-primary font-medium">as soon as it becomes financially viable, we will secure 
-                the proper licenses</strong> to provide you with the highest quality, real-time market data available. 
-                Until then, we&apos;re working with the best data sources we can access while building a foundation 
-                that will support premium data feeds in the future.
+                Here&apos;s our commitment: <strong className="af-text-primary font-medium">we will only expand broker auto sync when it is stable, useful, and transparent</strong>. 
+                Until then, we&apos;ll keep improving imports, replay, and review workflows so traders can still get real value today.
               </p>
             </section>
 

@@ -167,7 +167,7 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-geist), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 .af-page-bg {

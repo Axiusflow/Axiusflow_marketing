@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Cancel01Icon, Tick02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
@@ -8,25 +8,8 @@ import { Component as Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 const proCheckoutUrl = "https://app.axiusflow.com/pricing?checkout=pro";
-
-const plans = [
-  {
-    name: "Free",
-    price: "$0",
-    description: "Start journaling and validate whether Axiusflow fits your workflow.",
-    cta: "Start free",
-    ctaLink: "https://app.axiusflow.com/login",
-    highlight: false,
-  },
-  {
-    name: "Pro",
-    price: "$20/mo",
-    description: "Unlock the full personal trading journal and analytics workspace.",
-    cta: "Upgrade to Pro",
-    ctaLink: proCheckoutUrl,
-    highlight: true,
-  },
-];
+const annualProPrice = "$192/year";
+const monthlyProPrice = "$20/mo";
 
 type FeatureValue = boolean | string;
 
@@ -42,13 +25,13 @@ interface FeatureCategory {
 
 const featureCategories: FeatureCategory[] = [
   {
-    category: "Trading Workspace",
+    category: "Journal Workspace",
     features: [
       { name: "Workspaces", values: ["1", "Unlimited personal"] },
       { name: "Trading Accounts", values: ["1", "Unlimited"] },
-      { name: "Chart Layouts", values: ["1", "Unlimited"] },
-      { name: "Advanced Charting", values: [true, true] },
-      { name: "Terminal Live Charts", values: [false, true] },
+      { name: "Review Layouts", values: ["1", "Unlimited"] },
+      { name: "Journal Screenshots", values: [true, true] },
+      { name: "Replay Workspace", values: [false, true] },
     ],
   },
   {
@@ -108,9 +91,27 @@ function FeatureCell({ value }: { value: FeatureValue }) {
 }
 
 export default function PricingPage() {
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+  const plans = [
+    {
+      name: "Free",
+      price: "$0",
+      cta: "Start free",
+      ctaLink: "https://app.axiusflow.com/login",
+      highlight: false,
+    },
+    {
+      name: "Pro",
+      price: billingPeriod === "yearly" ? annualProPrice : monthlyProPrice,
+      cta: "Upgrade to Pro",
+      ctaLink: proCheckoutUrl,
+      highlight: true,
+    },
+  ] as const;
+
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       <section className="pt-16 pb-12 px-6">
         <div className="max-w-[1240px] mx-auto text-center">
@@ -126,64 +127,44 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="pb-12 px-6">
-        <div className="max-w-[980px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`rounded-2xl border p-6 transition-colors ${
-                plan.highlight
-                  ? "border-[#0ea5e9]/60 bg-[#0ea5e9]/5 dark:bg-[#0ea5e9]/10"
-                  : "border-[#ededed] dark:border-[#171717] bg-white/50 dark:bg-white/[0.02]"
-              }`}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2 className="font-display text-2xl font-semibold af-text-primary">
-                    {plan.name}
-                  </h2>
-                  <div className="mt-4 flex items-end gap-2">
-                    <span className="font-display text-4xl font-semibold af-text-primary">
-                      {plan.price}
-                    </span>
-                    {plan.name === "Pro" ? (
-                      <span className="af-text-secondary pb-1 text-sm">billed monthly</span>
-                    ) : null}
-                  </div>
-                </div>
-                {plan.highlight ? (
-                  <span className="rounded-full bg-[#0ea5e9]/10 px-3 py-1 text-xs font-semibold text-[#0ea5e9]">
-                    Recommended
-                  </span>
-                ) : null}
-              </div>
-
-              <p className="af-text-secondary mt-4 min-h-12 text-sm leading-6">
-                {plan.description}
-              </p>
-              <Link
-                href={plan.ctaLink}
-                className={`mt-5 inline-flex w-full justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors ${
-                  plan.highlight
-                    ? "bg-[#0ea5e9] text-white hover:bg-[#0284c7]"
-                    : "af-header-cta"
-                }`}
-              >
-                {plan.cta}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="pb-24 px-6">
         <div className="max-w-[980px] mx-auto overflow-x-auto">
+          <div className="mb-6 flex justify-center">
+            <div className="inline-flex rounded-full border border-[#ededed] bg-white/70 p-1 dark:border-[#171717] dark:bg-white/[0.04]">
+              {(
+                [
+                  { key: "monthly", label: "Monthly" },
+                  { key: "yearly", label: "Yearly" },
+                ] as const
+              ).map((option) => {
+                const isActive = billingPeriod === option.key;
+
+                return (
+                  <button
+                    key={option.key}
+                    type="button"
+                    onClick={() => setBillingPeriod(option.key)}
+                    className={`cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-[#0ea5e9] text-white"
+                        : "af-text-secondary hover:af-text-primary"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <table className="w-full border-collapse min-w-[720px]">
             <thead>
               <tr>
                 <th className="p-4 text-left w-[360px]"></th>
                 {plans.map((plan) => (
-                  <th key={plan.name} className="p-4 text-center w-[180px]">
+                  <th key={plan.name} className="p-4 text-center align-top w-[180px]">
+                    <div className="flex flex-col items-center">
                     <span
                       className={`font-display text-lg font-semibold af-text-primary ${
                         plan.highlight ? "text-xl" : ""
@@ -191,6 +172,20 @@ export default function PricingPage() {
                     >
                       {plan.name}
                     </span>
+                    <span className="mt-2 font-display text-3xl font-semibold af-text-primary">
+                      {plan.price}
+                    </span>
+                    <Link
+                      href={plan.ctaLink}
+                      className={`mt-3 inline-flex w-full max-w-[160px] justify-center rounded-full px-4 py-2.5 text-sm font-medium transition-colors ${
+                        plan.highlight
+                          ? "bg-[#0ea5e9] text-white hover:bg-[#0284c7]"
+                          : "af-header-cta"
+                      }`}
+                    >
+                      {plan.cta}
+                    </Link>
+                    </div>
                   </th>
                 ))}
               </tr>

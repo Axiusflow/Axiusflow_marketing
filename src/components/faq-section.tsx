@@ -11,7 +11,7 @@ export function FAQSection() {
   const [openItem, setOpenItem] = useState<string>();
 
   return (
-    <section className="af-page-bg min-h-[940px] py-16 lg:min-h-[980px] lg:py-24">
+    <section className="af-page-bg py-16 lg:py-24">
       <div className="mx-auto max-w-[800px] px-6">
         {/* Header */}
         <div className="mb-12 text-center">
@@ -25,7 +25,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-4 max-w-[540px] text-[15px] leading-[1.6] af-text-secondary">
-            Answers for traders comparing charting, journaling, replay, AI review, and market-data workflows.
+            Answers for traders comparing journaling, broker sync, replay, AI review, and analytics workflows.
           </p>
         </div>
 

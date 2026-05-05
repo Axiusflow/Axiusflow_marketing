@@ -57,11 +57,11 @@ export default function Home() {
           description: "Axiusflow Pro is available for $20 per month. A free plan is available for evaluation.",
         },
         featureList: [
-          "Live crypto charting",
           "Trading journal",
           "Trade replay",
           "AI-powered trade reviews",
           "Broker and CSV trade imports",
+          "Supported broker auto sync",
           "Performance analytics",
         ],
       },

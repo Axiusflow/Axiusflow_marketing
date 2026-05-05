@@ -16,7 +16,7 @@ const brokers = [
   { name: "Kraken", logo: "/broker_logo/kraken.png" },
   { name: "Interactive Brokers", logo: "/broker_logo/Ibkr.png" },
   { name: "TradeStation", logo: "/broker_logo/tradestation.png" },
-  { name: "TradingView", logo: "/broker_logo/tradingview.png" },
+  { name: "Webull", logo: "/broker_logo/webull.png" },
 ];
 
 // Card Visual Components
@@ -81,9 +81,9 @@ function IntegrationsVisual() {
 function CalendarVisual() {
   return (
     <div className="w-full max-w-[220px] mx-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 shadow-sm">
-      {/* Timeframe tabs */}
+      {/* Review tabs */}
       <div className="flex gap-1 mb-3">
-        {['1H', '4H', '1D'].map((tf, i) => (
+        {["Week", "Month", "Quarter"].map((tf, i) => (
           <span 
             key={tf} 
             className={`flex-1 text-center text-xs py-1 rounded ${
@@ -94,12 +94,12 @@ function CalendarVisual() {
           </span>
         ))}
       </div>
-      {/* Mini chart representations */}
+      {/* Mini performance representations */}
       <div className="space-y-2">
         {[
-          { tf: '1H', trend: 'up', bars: [40, 45, 42, 50, 55, 52, 60] },
-          { tf: '4H', trend: 'up', bars: [30, 35, 45, 50, 48, 55, 58] },
-          { tf: '1D', trend: 'down', bars: [60, 55, 50, 45, 48, 42, 40] },
+          { tf: "Win", trend: "up", bars: [40, 45, 42, 50, 55, 52, 60] },
+          { tf: "RR", trend: "up", bars: [30, 35, 45, 50, 48, 55, 58] },
+          { tf: "Err", trend: "down", bars: [60, 55, 50, 45, 48, 42, 40] },
         ].map((chart) => (
           <div key={chart.tf} className="flex items-center gap-2">
             <span className="w-6 text-xs font-medium af-text-secondary">{chart.tf}</span>
@@ -158,17 +158,17 @@ function RemindersVisual() {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <HugeiconsIcon icon={Notification03Icon} className="w-4 h-4 af-text-secondary" />
-          <span className="text-sm font-medium af-text-primary">Price Alerts</span>
+          <span className="text-sm font-medium af-text-primary">Review Reminders</span>
         </div>
         <button className="text-xs px-3 py-1 rounded-[8px] border border-gray-200 dark:border-white/10 af-text-secondary">
-          + New Alert
+          + New Reminder
         </button>
       </div>
       <div className="space-y-3">
         {[
-          { active: true, symbol: 'AAPL', condition: 'Above', price: '$185.00', color: 'text-emerald-500' },
-          { active: true, symbol: 'TSLA', condition: 'Below', price: '$240.00', color: 'text-red-500' },
-          { active: false, symbol: 'SPY', condition: 'Cross', price: '$450.00', color: 'text-blue-500' },
+          { active: true, symbol: "AAPL", condition: "Review", price: "Today", color: "text-emerald-500" },
+          { active: true, symbol: "TSLA", condition: "Tag", price: "2 PM", color: "text-red-500" },
+          { active: false, symbol: "SPY", condition: "Notes", price: "Later", color: "text-blue-500" },
         ].map((alert, i) => (
           <div key={i} className="flex items-center gap-3">
             <div className={`w-9 h-5 rounded-full ${alert.active ? 'bg-blue-500' : 'bg-gray-200 dark:bg-white/10'} relative`}>
@@ -248,11 +248,11 @@ function GroupBookingVisual() {
 function DurationVisual() {
   return (
     <div className="flex flex-wrap gap-2 justify-center max-w-[220px] mx-auto">
-      {['1m', '5m', '15m', '1H', '4H', '1D', '1W', '1M'].map((timeframe, i) => (
+      {["Momentum", "Trend", "FOMO", "A+", "NY Open", "Swing", "Revenge", "Breakout"].map((timeframe, i) => (
         <span 
           key={i} 
           className={`px-3 py-1.5 rounded-[8px] text-xs font-medium ${
-            timeframe === '4H' 
+            timeframe === 'A+' 
               ? 'bg-gray-900 text-white dark:bg-white dark:text-black' 
               : 'border border-gray-200 dark:border-white/10 af-text-secondary'
           }`}
@@ -299,15 +299,15 @@ export function BentoDemo() {
     <BentoGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {/* Row 1: 3 equal cards */}
       <BentoCard
-        title="Broker Imports & Sync Roadmap"
-        description="Bring CSV imports and supported sync workflows into one journal while new broker connections are added deliberately."
+        title="Broker Imports & Auto Sync"
+        description="Bring CSV imports and supported broker sync workflows into one journal while coverage expands deliberately."
       >
         <IntegrationsVisual />
       </BentoCard>
 
       <BentoCard
-        title="Multi-Timeframe Analysis"
-        description="Analyze charts across multiple timeframes simultaneously to spot trends and patterns."
+        title="Review Period Snapshots"
+        description="Compare weekly, monthly, and quarterly review patterns without leaving your journal workflow."
       >
         <CalendarVisual />
       </BentoCard>
@@ -321,8 +321,8 @@ export function BentoDemo() {
 
       {/* Row 2: 2 cards (wider left, narrower right) */}
       <BentoCard
-        title="Smart Alerts & Real-Time Notifications"
-        description="Get instant alerts for price movements, technical signals, and market events."
+        title="Review Reminders"
+        description="Set reminders to revisit trades, add notes, and close the loop on your post-session review."
         className="lg:col-span-2"
       >
         <RemindersVisual />
@@ -344,8 +344,8 @@ export function BentoDemo() {
       </BentoCard>
 
       <BentoCard
-        title="Customizable Timeframes"
-        description="From tick charts to monthly candles, analyze any timeframe that fits your strategy."
+        title="Journal Filters"
+        description="Slice your review workflow by setup, hold time, session, or any tag that fits your process."
       >
         <DurationVisual />
       </BentoCard>

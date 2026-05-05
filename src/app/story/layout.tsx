@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Our Story: Building a TradingView Alternative",
+  title: "Our Story: Building Axiusflow",
   description:
-    "Read why Axiusflow is building a smoother trading OS for active traders: live crypto charts, journaling, replay, AI review, broker imports, and honest market-data expansion.",
+    "Read why Axiusflow is building a focused trading journal for active traders with broker imports, supported auto sync, replay, AI review, and honest product expansion.",
   alternates: {
     canonical: `${siteUrl}/story`,
   },

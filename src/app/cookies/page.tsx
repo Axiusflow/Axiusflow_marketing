@@ -8,7 +8,7 @@ import { Header } from "@/components/header";
 export default function CookiesPage() {
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       <main className="px-6 pb-24">
         <article className="mx-auto max-w-[720px]">

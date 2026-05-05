@@ -8,7 +8,7 @@ import { Header } from "@/components/header";
 export default function DisclaimerPage() {
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       <main className="px-6 pb-24">
         <article className="mx-auto max-w-[720px]">
@@ -54,7 +54,7 @@ export default function DisclaimerPage() {
               </h2>
               <p className="text-[15px] leading-[1.8] af-text-secondary">
                 Axiusflow provides tools and information for educational and informational purposes only. 
-                <strong className="af-text-primary font-medium"> Nothing on our platform constitutes financial advice, 
+                <strong className="af-text-primary font-medium"> Nothing in our services constitutes financial advice, 
                 investment advice, trading advice, or any other sort of advice.</strong>
               </p>
               <p className="mt-4 text-[15px] leading-[1.8] af-text-secondary">
@@ -99,7 +99,7 @@ export default function DisclaimerPage() {
               </h2>
               <p className="text-[15px] leading-[1.8] af-text-secondary">
                 We make no guarantees regarding the accuracy, completeness, or timeliness of any information 
-                provided through our Services. Market data, charts, and analytics are provided for informational 
+                provided through our Services. Imported trade records, replay views, and analytics are provided for informational 
                 purposes only and should not be relied upon as the sole basis for making trading decisions.
               </p>
             </section>
@@ -151,7 +151,7 @@ export default function DisclaimerPage() {
                 6. Market Data Disclaimer
               </h2>
               <p className="text-[15px] leading-[1.8] af-text-secondary">
-                Market data displayed on our platform may be delayed or may not reflect real-time prices. 
+                Market data displayed in our services may be delayed or may not reflect real-time prices. 
                 Data accuracy depends on third-party providers and exchange feeds. Always verify prices 
                 with your broker before executing trades.
               </p>
@@ -174,9 +174,9 @@ export default function DisclaimerPage() {
                 8. Regulatory Compliance
               </h2>
               <p className="text-[15px] leading-[1.8] af-text-secondary">
-                Axiusflow is a software platform provider and is not a registered broker-dealer, investment 
-                advisor, or financial institution. Our Services are not intended to be used in jurisdictions 
-                where such use would be prohibited by law.
+                Axiusflow is a software service provider and is not a registered broker-dealer, investment 
+                advisor, financial institution, charting platform, or trade execution venue. Our Services are 
+                not intended to be used in jurisdictions where such use would be prohibited by law.
               </p>
             </section>
 

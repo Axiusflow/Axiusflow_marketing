@@ -4,7 +4,7 @@ import { siteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Changelog for Trading Journal, Replay & AI Review",
   description:
-    "Follow Axiusflow product updates across live crypto charting, trading journal analytics, trade replay, AI reviews, broker imports, and performance improvements.",
+    "Follow Axiusflow product updates across trading journal analytics, trade replay, AI reviews, broker imports, auto sync workflows, and performance improvements.",
   alternates: {
     canonical: `${siteUrl}/changelog`,
   },

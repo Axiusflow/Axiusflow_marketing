@@ -42,9 +42,9 @@ const changelogEntries: ChangelogEntry[] = [
     id: "1",
     tag: "Feature Release",
     date: "Apr 15, 2026",
-    title: "Cloud-Native Charting Now Available",
+    title: "Broker Sync Workspace Now Available",
     description:
-      "Access professional-grade charts from anywhere, on any device. Our cloud-native charting solution brings institutional-quality tools to traders of all levels with real-time synchronization across all your devices.",
+      "Review imported trades, connected accounts, and journal notes in one browser-based workspace. This release improves the path from broker data to clean post-trade review without positioning Axiusflow as a charting terminal.",
   },
   {
     id: "2",
@@ -76,14 +76,14 @@ const changelogEntries: ChangelogEntry[] = [
     date: "Mar 20, 2026",
     title: "Performance Optimizations",
     description:
-      "Fixed several performance issues affecting chart loading times and data synchronization. The platform is now faster and more responsive across all devices.",
+      "Fixed several performance issues affecting journal loading, replay responsiveness, and data synchronization. The workspace is now faster and more responsive across devices.",
   },
 ];
 
 export default function ChangelogPage() {
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       <main className="px-6 pb-24">
         <div className="mx-auto max-w-[1000px]">

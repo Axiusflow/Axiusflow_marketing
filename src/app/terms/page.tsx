@@ -8,7 +8,7 @@ import { Header } from "@/components/header";
 export default function TermsPage() {
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       <main className="px-6 pb-24">
         <article className="mx-auto max-w-[720px]">
@@ -58,9 +58,10 @@ export default function TermsPage() {
                 2. Description of Services
               </h2>
               <p className="text-[15px] leading-[1.8] af-text-secondary">
-                Axiusflow provides a cloud-based trading platform that includes charting tools, trading journal 
-                functionality, broker connectivity, and related services. Our Services are designed to assist 
-                traders in analyzing markets and managing their trading activities.
+                Axiusflow provides a cloud-based trading journal service that includes trade review tools, 
+                broker connectivity, imports, analytics, replay features, and related services. Our Services are 
+                designed to help traders review performance and manage trading records. Axiusflow is not a 
+                charting platform, brokerage, or trade execution venue.
               </p>
               <p className="mt-4 text-[15px] leading-[1.8] af-text-secondary">
                 <strong className="af-text-primary font-medium">Important:</strong> Axiusflow does not provide 

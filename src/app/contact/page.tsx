@@ -8,18 +8,18 @@ import { Component as Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 const benefits = [
-  "Map your TradingView, broker, and journal workflow into Axiusflow",
-  "Get a focused demo of charting, journaling, replay, and AI review",
-  "Discuss supported trade imports and broker sync priorities",
+  "Map your broker, import, and journal workflow into Axiusflow",
+  "Get a focused demo of journaling, replay, analytics, and AI review",
+  "Discuss supported trade imports and broker auto sync priorities",
   "Request integrations that match your active trading workflow",
   "Plan data, privacy, and analytics needs before launch access",
 ];
 
 const stats = [
-  { value: "Live", label: "crypto charting available as the first data wedge" },
+  { value: "Sync", label: "supported broker workflows built for cleaner review data" },
   { value: "CSV", label: "trade import workflows for journal analytics" },
   { value: "AI", label: "post-session review for decisions, risk, and behavior" },
-  { value: "Replay", label: "chart context connected to entries and exits" },
+  { value: "Replay", label: "execution context connected to entries, exits, and notes" },
 ];
 
 const companySizes = [
@@ -37,7 +37,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen af-page-bg transition-colors duration-300">
-      <Header variant="simple" />
+      <Header />
 
       {/* Main Content */}
       <main className="px-6 py-16">
@@ -49,8 +49,8 @@ export default function ContactPage() {
                 Contact Sales
               </h1>
               <p className="text-[17px] leading-[1.7] af-text-secondary mb-8">
-                Request a demo, or tell us which charting, journaling,
-                broker import, and replay workflow you want Axiusflow to support first.
+                Request a demo, or tell us which journaling, broker import,
+                auto sync, and replay workflow you want Axiusflow to support first.
               </p>
 
               {/* Benefits List */}

@@ -12,7 +12,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { FlickeringGrid } from "@/registry/magicui/flickering-grid";
 
-type FeatureKey = "charting" | "automation" | "risk";
+type FeatureKey = "journal" | "sync" | "review";
 
 type FeaturePanel = {
   label: string;
@@ -23,42 +23,42 @@ type FeaturePanel = {
 };
 
 const panels: Record<FeatureKey, FeaturePanel> = {
-  charting: {
-    label: "Pro Charting",
-    title: "Precision charting for discretionary and systematic traders",
+  journal: {
+    label: "Smart Journal",
+    title: "Capture trades, notes, tags, and screenshots in one clean workflow",
     description:
-      "Stack multi-timeframe layouts, 120+ indicators, and synchronized watchlists in a single workspace built for market speed.",
-    badge: "Live BTCUSD",
+      "Keep every trade review tied to the context that matters, from notes and setups to screenshots and performance history.",
+    badge: "Journal Live",
     stats: [
-      { label: "Indicators", value: "120+" },
-      { label: "Timeframes", value: "14" },
-      { label: "Saved Layouts", value: "48" },
-      { label: "Real-time Streams", value: "32" },
+      { label: "Tagged Trades", value: "248" },
+      { label: "Review Notes", value: "91" },
+      { label: "Saved Views", value: "18" },
+      { label: "Error Tags", value: "12" },
     ],
   },
-  automation: {
-    label: "Signal Automation",
-    title: "Automate setups, scans, and alerts without leaving your charts",
+  sync: {
+    label: "Broker Sync",
+    title: "Import trade history and keep supported broker workflows connected",
     description:
-      "Define smart conditions with reusable templates, then route signals to alerts, bots, or execution workflows in seconds.",
-    badge: "Signal Engine",
+      "Start with imports, then add supported broker auto sync where it improves reliability and makes your review process faster.",
+    badge: "Sync Status",
     stats: [
-      { label: "Active Alerts", value: "1,284" },
-      { label: "Scan Rules", value: "96" },
-      { label: "Webhook Routes", value: "24" },
-      { label: "Avg Trigger", value: "42 ms" },
+      { label: "Imported Trades", value: "12.4k" },
+      { label: "Connected Sources", value: "6" },
+      { label: "Sync Checks", value: "99.2%" },
+      { label: "CSV Sources", value: "14" },
     ],
   },
-  risk: {
-    label: "Risk Console",
-    title: "Track exposure, position sizing, and portfolio risk in real time",
+  review: {
+    label: "AI Review",
+    title: "Replay decisions, spot mistakes, and turn history into repeatable lessons",
     description:
-      "Surface portfolio heat, drawdown limits, and scenario testing across symbols and strategies before every trade.",
-    badge: "Risk Monitor",
+      "Use replay, analytics, and AI-assisted reviews to understand what happened, why it happened, and what to improve next.",
+    badge: "Review Engine",
     stats: [
-      { label: "Portfolio Heat", value: "6.3%" },
-      { label: "Open Positions", value: "19" },
-      { label: "Max Drawdown", value: "-2.1%" },
+      { label: "AI Reviews", value: "127" },
+      { label: "Repeat Errors", value: "8" },
+      { label: "Avg R:R", value: "1.84" },
       { label: "Win/Loss Ratio", value: "1.87" },
     ],
   },
@@ -67,25 +67,25 @@ const panels: Record<FeatureKey, FeaturePanel> = {
 const toggleRows = [
   {
     key: "sync",
-    title: "Multi-timeframe sync",
-    description: "Link symbols, crosshairs, and drawing tools across panes.",
+    title: "Broker imports",
+    description: "Bring in fills, executions, and account history from supported sources.",
   },
   {
     key: "sentiment",
-    title: "Sentiment layer",
-    description: "Overlay news sentiment and social momentum on chart regions.",
+    title: "AI review cues",
+    description: "Surface recurring mistakes, strengths, and habits worth reviewing.",
   },
   {
     key: "risk",
-    title: "Auto risk overlays",
-    description: "Project stops, targets, and expected value before entry.",
+    title: "Replay context",
+    description: "Keep notes, screenshots, and performance context attached to each session.",
   },
 ] as const;
 
 type ToggleKey = (typeof toggleRows)[number]["key"];
 
 export function TradingFeaturesSection() {
-  const [activeTab, setActiveTab] = useState<FeatureKey>("charting");
+  const [activeTab, setActiveTab] = useState<FeatureKey>("journal");
   const [toggles, setToggles] = useState<Record<ToggleKey, boolean>>({
     sync: true,
     sentiment: true,
@@ -100,14 +100,14 @@ export function TradingFeaturesSection() {
         <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-[760px] text-left">
             <p className="text-[12px] font-semibold uppercase tracking-[0.14em] af-text-secondary">
-              Trading Workspace
+              Review Workspace
             </p>
             <h2 className="font-display mt-2 text-[clamp(24px,2.8vw,40px)] font-semibold leading-[1.08] tracking-[-0.018em] af-text-primary">
-              A TradingView-like platform built for chart speed and execution clarity
+              A smart trading journal built for review, replay, and broker sync
             </h2>
             <p className="mt-3 max-w-[680px] text-[15px] leading-[1.55] af-text-secondary">
-              Switch between charting, automation, and risk modules instantly.
-              Keep one full dashboard in focus while every panel stays connected.
+              Keep imports, notes, analytics, replay, and AI review connected in one
+              focused workflow without pretending to be a charting terminal.
             </p>
           </div>
 
@@ -115,18 +115,18 @@ export function TradingFeaturesSection() {
             {(
               [
                 {
-                  key: "charting",
-                  label: "Pro Charting",
+                  key: "journal",
+                  label: "Smart Journal",
                   icon: BarChartIcon,
                 },
                 {
-                  key: "automation",
-                  label: "Signal Automation",
+                  key: "sync",
+                  label: "Broker Sync",
                   icon: ZapIcon,
                 },
                 {
-                  key: "risk",
-                  label: "Risk Console",
+                  key: "review",
+                  label: "AI Review",
                   icon: SlidersHorizontalIcon,
                 },
               ] as const
@@ -181,13 +181,13 @@ export function TradingFeaturesSection() {
               <div className="relative h-[360px] w-full sm:h-[420px]">
                 <Image
                   src="/hero_light.png"
-                  alt="Trading dashboard preview"
+                  alt="Trading journal dashboard preview"
                   fill
                   className="object-cover dark:hidden"
                 />
                 <Image
                   src="/hero_dark.png"
-                  alt="Trading dashboard preview"
+                  alt="Trading journal dashboard preview"
                   fill
                   className="hidden object-cover dark:block"
                 />
@@ -212,9 +212,9 @@ export function TradingFeaturesSection() {
 
             <div className="space-y-4">
               <div className="rounded-2xl border border-white/10 bg-black/55 p-4 sm:p-5">
-                <h4 className="text-sm font-semibold text-white">Workspace Toggles</h4>
+                <h4 className="text-sm font-semibold text-white">Workflow Toggles</h4>
                 <p className="mt-1 text-xs leading-relaxed text-neutral-300">
-                  Enable modules and overlays used by your active desk.
+                  Turn on the review tools that matter for your current process.
                 </p>
 
                 <div className="mt-4 space-y-3">
@@ -265,20 +265,20 @@ export function TradingFeaturesSection() {
 
               <div className="rounded-2xl border border-white/10 bg-black/55 p-4 sm:p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-sky-200/90">
-                  Desk Snapshot
+                  Journal Snapshot
                 </p>
                 <div className="mt-3 grid grid-cols-3 gap-2">
                   <div className="rounded-lg border border-white/10 bg-black/40 p-3">
                     <p className="text-[10px] uppercase tracking-[0.1em] text-neutral-300">
-                      Alerts Fired
+                      Synced Accounts
                     </p>
-                    <p className="mt-1 text-sm font-semibold text-white">324</p>
+                    <p className="mt-1 text-sm font-semibold text-white">3</p>
                   </div>
                   <div className="rounded-lg border border-white/10 bg-black/40 p-3">
                     <p className="text-[10px] uppercase tracking-[0.1em] text-neutral-300">
-                      Avg Latency
+                      Review Streak
                     </p>
-                    <p className="mt-1 text-sm font-semibold text-white">67 ms</p>
+                    <p className="mt-1 text-sm font-semibold text-white">12 days</p>
                   </div>
                   <div className="rounded-lg border border-white/10 bg-black/40 p-3">
                     <p className="text-[10px] uppercase tracking-[0.1em] text-neutral-300">

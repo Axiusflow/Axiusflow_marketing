@@ -858,7 +858,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         maskCtx.save();
         maskCtx.scale(dpr, dpr);
         maskCtx.fillStyle = "white";
-        maskCtx.font = `${fontWeight} ${fontSize}px "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+        maskCtx.font = `${fontWeight} ${fontSize}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
         maskCtx.textAlign = "center";
         maskCtx.textBaseline = "middle";
         maskCtx.fillText(text, width / (2 * dpr), height / (2 * dpr));
@@ -1095,7 +1095,7 @@ export const siteConfig = {
     badge: "Trading journal, replay, and AI review",
     title: "Axiusflow trading OS",
     description:
-      "A crypto-first trading workspace for charting, journaling, replay, AI reviews, broker imports, and performance analytics.",
+      "A trading journal workspace for broker imports, supported auto sync, replay, AI reviews, and performance analytics.",
     cta: {
       primary: {
         text: "Login",

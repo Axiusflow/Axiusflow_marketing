@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -13,12 +13,6 @@ import {
   siteTitle,
   siteUrl,
 } from "@/lib/seo";
-
-const geist = Geist({
-  variable: "--font-geist",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -57,7 +51,7 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: ogImageWidth,
         height: ogImageHeight,
-        alt: "Axiusflow trading journal, replay, AI review, and crypto charting workspace",
+            alt: "Axiusflow trading journal, broker sync, replay, and AI review workspace",
       },
     ],
     locale: "en_US",
@@ -93,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${inter.variable} h-full scroll-smooth antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         {/* Google Analytics */}
         <Script
