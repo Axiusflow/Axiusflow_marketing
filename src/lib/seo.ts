@@ -7,35 +7,83 @@ export const ogImageHeight = 909;
 export const proPriceMonthlyUSD = 20;
 export const proPriceYearlyUSD = 192;
 
-export const siteTitle =
-  "Smart Trading Journal with Personalized AI | Axiusflow";
+export const siteTitle = "Axiusflow — Smart Trading Journal";
 
 export const siteDescription =
-  "Axiusflow is a modern trading journal with personalized AI, broker imports, supported auto sync, and premium analytics built for active traders who want a serious review workspace.";
+  "Axiusflow is a smart trading journal with personalized AI, broker imports, supported auto sync, and premium analytics for active day, futures, options, forex, crypto, and prop firm traders.";
 
 export const seoKeywords = [
+  // Core product terms
   "trading journal",
+  "smart trading journal",
+  "online trading journal",
+  "trading journal app",
+  "trading journal software",
+  "best trading journal",
+  "premium trading journal",
+  "modern trading journal",
+  "trading journal for active traders",
+  // AI angle
   "AI trading journal",
   "personalized AI trading journal",
-  "modern trading journal",
-  "premium trading journal",
-  "trading journal software",
+  "AI trade review",
+  "AI trade analysis",
+  "automated trading journal",
+  // Trader segments
+  "day trading journal",
+  "scalping trading journal",
+  "swing trading journal",
+  "futures trading journal",
+  "options trading journal",
+  "forex trading journal",
+  "crypto trading journal",
+  "stock trading journal",
+  "prop firm trading journal",
+  "FTMO trading journal",
+  "Topstep trading journal",
+  "MyForexFunds trading journal",
+  // Broker / platform specific
+  "Interactive Brokers trading journal",
+  "TD Ameritrade trading journal",
+  "Charles Schwab trading journal",
+  "thinkorswim trading journal",
+  "TradeStation trading journal",
+  "NinjaTrader trading journal",
+  "Tradovate trading journal",
+  "Webull trading journal",
+  "Robinhood trading journal",
+  "MetaTrader 5 trading journal",
+  "cTrader trading journal",
+  "OANDA trading journal",
+  "TradingView journal",
+  "Coinbase trading journal",
+  "Binance trading journal",
+  "Kraken trading journal",
+  // Competitor / alternative terms
   "tradezella alternative",
   "tradervue alternative",
   "edgewonk alternative",
-  "crypto trading journal",
-  "day trading journal",
-  "futures trading journal",
-  "forex trading journal",
-  "options trading journal",
-  "prop firm trading journal",
-  "trading journal analytics",
-  "broker trade import",
-  "broker sync trading journal",
-  "multi broker trading journal",
+  "tradesync alternative",
+  "chartlog alternative",
+  "trademetria alternative",
+  "stonk journal alternative",
+  // Workflow / analytics terms
+  "trade tracker",
+  "trade analytics",
   "trading performance analytics",
+  "win rate tracker",
+  "R-multiple journal",
+  "P&L journal",
+  "expectancy tracker",
+  "trading psychology journal",
+  "trade tagging",
+  "post trade review",
   "trade review software",
-  "AI trade review",
+  // Imports & sync
+  "broker trade import",
+  "CSV trade import",
+  "broker auto sync",
+  "multi broker trading journal",
 ];
 
 export const socialLinks = {

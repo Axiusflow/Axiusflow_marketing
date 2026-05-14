@@ -2,10 +2,10 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Axiusflow — Smart Trading Journal with Personalized AI",
+    name: "Axiusflow — Smart Trading Journal",
     short_name: "Axiusflow",
     description:
-      "A modern trading journal with personalized AI, broker imports, supported auto sync, and premium analytics for active traders.",
+      "A smart trading journal with personalized AI, broker imports, supported auto sync, and premium analytics for active traders.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

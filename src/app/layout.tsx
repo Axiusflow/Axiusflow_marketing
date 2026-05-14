@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Axiusflow — Smart Trading Journal with Personalized AI",
+    title: "Axiusflow — Smart Trading Journal",
     description: siteDescription,
     url: siteUrl,
     siteName,
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axiusflow — Smart Trading Journal with Personalized AI",
+    title: "Axiusflow — Smart Trading Journal",
     description: siteDescription,
     images: [ogImageUrl],
     creator: "@axiusflow",
