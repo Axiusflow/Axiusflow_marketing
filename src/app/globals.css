@@ -164,13 +164,13 @@ html {
 body {
   background: var(--token-bg-page);
   color: var(--token-text-primary);
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-google-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .font-display {
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-google-sans), system-ui, -apple-system, sans-serif;
 }
 
 .af-page-bg {
